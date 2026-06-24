@@ -365,10 +365,10 @@
                     <i data-lucide="rotate-ccw" class="w-4 h-4"></i> 重置全部
                 </button>
                 <button onclick="exportSave()" class="text-slate-400 hover:text-emerald-400 transition flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 px-3 py-2 rounded-lg text-sm">
-                    <i data-lucide="download" class="w-4 h-4"></i> 下載存檔
+                    <i data-lucide="download" class="w-4 h-4"></i> 下載同步檔
                 </button>
                 <label class="text-slate-400 hover:text-sky-400 transition flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 px-3 py-2 rounded-lg text-sm cursor-pointer">
-                    <i data-lucide="upload" class="w-4 h-4"></i> 載入存檔
+                    <i data-lucide="upload" class="w-4 h-4"></i> 載入同步檔
                     <input type="file" accept=".json" class="hidden" onchange="importSave(event)">
                 </label>
                 <button onclick="lsClear()" class="text-slate-400 hover:text-rose-400 transition flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 px-3 py-2 rounded-lg text-sm">
@@ -8593,6 +8593,127 @@ function checkGame10() {
         }
 
         const LS_KEY = 'shms_master_save_v1';
+        const FULL_SYNC_TYPE = 'safetyMasterFullSync';
+        const IMPORT_BACKUP_KEY = 'safetyMasterLastLocalBackupBeforeImport';
+        const G29_NOTE_PREFIX = 'safetyMasterG29Note_q';
+
+        function safeJsonParse(raw, fallback = null) {
+            if (raw == null || raw === '') return fallback;
+            try {
+                return JSON.parse(raw);
+            } catch (e) {
+                return fallback;
+            }
+        }
+
+        function collectG29NotesForSync() {
+            const notes = {};
+            try {
+                for (let i = 0; i < localStorage.length; i++) {
+                    const key = localStorage.key(i);
+                    if (!key || !key.startsWith(G29_NOTE_PREFIX)) continue;
+                    const match = key.match(/^safetyMasterG29Note_q(\d+)_s(\d+)$/);
+                    if (!match) continue;
+                    notes['q' + match[1] + '_s' + match[2]] = localStorage.getItem(key) || '';
+                }
+            } catch (e) {
+                console.warn('收集第29關筆記失敗:', e);
+            }
+            return notes;
+        }
+
+        function removeAllG29Notes() {
+            const keys = [];
+            try {
+                for (let i = 0; i < localStorage.length; i++) {
+                    const key = localStorage.key(i);
+                    if (key && key.startsWith(G29_NOTE_PREFIX)) keys.push(key);
+                }
+                keys.forEach(key => localStorage.removeItem(key));
+            } catch (e) {
+                console.warn('清除第29關筆記失敗:', e);
+            }
+        }
+
+        function restoreG29NotesFromSync(notes) {
+            if (!notes || typeof notes !== 'object') return;
+            removeAllG29Notes();
+            Object.entries(notes).forEach(([key, value]) => {
+                const match = String(key).match(/^q(\d+)_s(\d+)$/);
+                if (!match) return;
+                localStorage.setItem('safetyMasterG29Note_q' + match[1] + '_s' + match[2], String(value || ''));
+            });
+        }
+
+        function collectFullSyncPackage() {
+            lsSave();
+            return {
+                app: '職安大師',
+                type: FULL_SYNC_TYPE,
+                schemaVersion: 1,
+                exportedAt: new Date().toISOString(),
+                exportedAtText: new Date().toLocaleString('zh-TW'),
+                main: {
+                    [LS_KEY]: safeJsonParse(localStorage.getItem(LS_KEY), {})
+                },
+                g25: {
+                    correctIds: safeJsonParse(localStorage.getItem('g25_correct_ids'), [])
+                },
+                g29: {
+                    answers: safeJsonParse(localStorage.getItem('safetyMasterG29Answers'), {}),
+                    mastery: safeJsonParse(localStorage.getItem('safetyMasterG29Mastery'), {}),
+                    notes: collectG29NotesForSync()
+                },
+                examSimulator: {
+                    bookmarks: safeJsonParse(localStorage.getItem('oshaBookmarks'), []),
+                    progress: safeJsonParse(localStorage.getItem('oshaProgress'), null)
+                }
+            };
+        }
+
+        function backupCurrentLocalSaveBeforeImport() {
+            try {
+                const backup = collectFullSyncPackage();
+                backup.backupReason = 'before-import';
+                backup.backupAt = new Date().toISOString();
+                localStorage.setItem(IMPORT_BACKUP_KEY, JSON.stringify(backup));
+            } catch (e) {
+                console.warn('匯入前備份失敗:', e);
+            }
+        }
+
+        function applyFullSyncPackage(pkg) {
+            if (!pkg || typeof pkg !== 'object') throw new Error('格式錯誤');
+
+            if (pkg.type === FULL_SYNC_TYPE || pkg.schemaVersion) {
+                const mainState = pkg.main && pkg.main[LS_KEY] ? pkg.main[LS_KEY] : pkg.mainSave;
+                if (mainState) localStorage.setItem(LS_KEY, JSON.stringify(mainState));
+
+                if (pkg.g25 && Array.isArray(pkg.g25.correctIds)) {
+                    localStorage.setItem('g25_correct_ids', JSON.stringify(pkg.g25.correctIds));
+                }
+
+                if (pkg.g29) {
+                    if (pkg.g29.answers) localStorage.setItem('safetyMasterG29Answers', JSON.stringify(pkg.g29.answers));
+                    if (pkg.g29.mastery) localStorage.setItem('safetyMasterG29Mastery', JSON.stringify(pkg.g29.mastery));
+                    if (pkg.g29.notes) restoreG29NotesFromSync(pkg.g29.notes);
+                }
+
+                if (pkg.examSimulator) {
+                    if (Array.isArray(pkg.examSimulator.bookmarks)) {
+                        localStorage.setItem('oshaBookmarks', JSON.stringify(pkg.examSimulator.bookmarks));
+                    }
+                    if (pkg.examSimulator.progress) {
+                        localStorage.setItem('oshaProgress', JSON.stringify(pkg.examSimulator.progress));
+                    }
+                }
+                return '完整同步檔';
+            }
+
+            // 相容舊版 safety-master-save-YYYY-MM-DD.json：整份就是主存檔 state。
+            localStorage.setItem(LS_KEY, JSON.stringify(pkg));
+            return '舊版主存檔';
+        }
 
         function lsSave() {
             try {
@@ -8785,13 +8906,32 @@ function checkGame10() {
 
         function lsClear() {
             localStorage.removeItem(LS_KEY);
+            localStorage.removeItem('safetyMasterG29Answers');
+            localStorage.removeItem('safetyMasterG29Mastery');
+            localStorage.removeItem('g25_correct_ids');
+            localStorage.removeItem('oshaBookmarks');
+            localStorage.removeItem('oshaProgress');
+            removeAllG29Notes();
             window._lsPendingState = null;
             showToast('🗑️ 存檔已清除', 'info');
             _lsHideIndicator();
         }
 function exportSave() {
-            const raw = localStorage.getItem(LS_KEY);
-            if (!raw) { showToast('⚠️ 目前沒有存檔可以下載', 'error'); return; }
+            const data = collectFullSyncPackage();
+            const hasMain = data.main && data.main[LS_KEY] && Object.keys(data.main[LS_KEY]).length > 0;
+            const hasG29Answers = data.g29 && data.g29.answers && Object.keys(data.g29.answers).length > 0;
+            const hasG29Notes = data.g29 && data.g29.notes && Object.keys(data.g29.notes).length > 0;
+            const hasG29Mastery = data.g29 && data.g29.mastery && Object.keys(data.g29.mastery).length > 0;
+            const hasG25 = data.g25 && Array.isArray(data.g25.correctIds) && data.g25.correctIds.length > 0;
+            const hasExam = data.examSimulator && (
+                (Array.isArray(data.examSimulator.bookmarks) && data.examSimulator.bookmarks.length > 0) ||
+                data.examSimulator.progress
+            );
+            if (!hasMain && !hasG29Answers && !hasG29Notes && !hasG29Mastery && !hasG25 && !hasExam) {
+                showToast('⚠️ 目前沒有存檔可以下載', 'error');
+                return;
+            }
+            const raw = JSON.stringify(data, null, 2);
             const blob = new Blob([raw], { type: 'application/json' });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
@@ -8800,10 +8940,10 @@ function exportSave() {
                 String(now.getMonth()+1).padStart(2,'0') + '-' +
                 String(now.getDate()).padStart(2,'0');
             a.href = url;
-            a.download = 'safety-master-save-' + ts + '.json';
+            a.download = 'safety-master-full-sync-' + ts + '.json';
             a.click();
             URL.revokeObjectURL(url);
-            showToast('💾 存檔已下載！', 'success');
+            showToast('💾 完整同步檔已下載！', 'success');
         }
         function importSave(event) {
             const file = event.target.files[0];
@@ -8813,8 +8953,9 @@ function exportSave() {
                 try {
                     const data = JSON.parse(e.target.result);
                     if (typeof data !== 'object' || data === null) throw new Error('格式錯誤');
-                    localStorage.setItem(LS_KEY, JSON.stringify(data));
-                    showToast('📂 存檔已載入！重新整理頁面以套用進度', 'success');
+                    backupCurrentLocalSaveBeforeImport();
+                    const importType = applyFullSyncPackage(data);
+                    showToast('📂 ' + importType + '已載入！重新整理頁面以套用進度', 'success');
                     setTimeout(() => location.reload(), 1500);
                 } catch(err) {
                     showToast('✗ 存檔格式錯誤，請確認是正確的 .json 存檔', 'error');
@@ -8828,7 +8969,7 @@ function exportSave() {
             const el = document.getElementById('ls-save-indicator');
             if (el) {
                 const raw = localStorage.getItem(LS_KEY);
-                const state = raw ? JSON.parse(raw) : null;
+                const state = raw ? safeJsonParse(raw, null) : null;
                 el.textContent = state && state.savedAt ? '💾 ' + state.savedAt : '💾 已存檔';
                 el.classList.remove('hidden');
             }
