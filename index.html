@@ -1573,14 +1573,61 @@
                     <button onclick="showAnswer14Group(9)" class="text-slate-400 hover:text-white bg-slate-800 hover:bg-slate-700 px-3 py-2 rounded-lg border border-slate-700 text-sm">公布解答</button>
                   </div>
                 </div>
+
+                <!-- 第十組 -->
+                <div class="bg-slate-950/60 border border-cyan-800/50 rounded-xl p-5 mb-3 text-sm leading-loose text-slate-200 space-y-3 text-left" id="g14-group10">
+                  <div class="flex items-center gap-2 mb-3 pb-2 border-b border-cyan-800/40">
+                    <span class="bg-cyan-900/60 text-cyan-300 text-xs font-bold px-3 py-1 rounded-full border border-cyan-700">第十組</span>
+                    <span class="text-xs text-slate-400">高壓電路接近界線距離（空格 1001–1010）</span>
+                  </div>
+                  <p class="font-bold text-cyan-400 text-xs mb-2">請依使用電壓（千伏特）選出對應之接近界線距離（公分）：</p>
+                  <div class="overflow-x-auto">
+                    <table class="w-full min-w-[520px] text-sm border border-slate-700 rounded-lg overflow-hidden">
+                      <thead class="bg-slate-800/80 text-cyan-200">
+                        <tr>
+                          <th class="border border-slate-700 px-3 py-2 text-left">使用電壓（千伏特）</th>
+                          <th class="border border-slate-700 px-3 py-2 text-left">接近界線距離（公分）</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr><td class="border border-slate-700 px-3 py-2">22 以下</td><td class="border border-slate-700 px-3 py-2"><span class="g14-blank inline-block min-w-[3rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1001" data-correct="G10A" onclick="fillBlank14(this)">＿</span></td></tr>
+                        <tr><td class="border border-slate-700 px-3 py-2">超過 22，33 以下</td><td class="border border-slate-700 px-3 py-2"><span class="g14-blank inline-block min-w-[3rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1002" data-correct="G10B" onclick="fillBlank14(this)">＿</span></td></tr>
+                        <tr><td class="border border-slate-700 px-3 py-2">超過 33，66 以下</td><td class="border border-slate-700 px-3 py-2"><span class="g14-blank inline-block min-w-[3rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1003" data-correct="G10C" onclick="fillBlank14(this)">＿</span></td></tr>
+                        <tr><td class="border border-slate-700 px-3 py-2">超過 66，77 以下</td><td class="border border-slate-700 px-3 py-2"><span class="g14-blank inline-block min-w-[3rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1004" data-correct="G10D" onclick="fillBlank14(this)">＿</span></td></tr>
+                        <tr><td class="border border-slate-700 px-3 py-2">超過 77，110 以下</td><td class="border border-slate-700 px-3 py-2"><span class="g14-blank inline-block min-w-[3rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1005" data-correct="G10E" onclick="fillBlank14(this)">＿</span></td></tr>
+                        <tr><td class="border border-slate-700 px-3 py-2">超過 110，154 以下</td><td class="border border-slate-700 px-3 py-2"><span class="g14-blank inline-block min-w-[3rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1006" data-correct="G10F" onclick="fillBlank14(this)">＿</span></td></tr>
+                        <tr><td class="border border-slate-700 px-3 py-2">超過 154，187 以下</td><td class="border border-slate-700 px-3 py-2"><span class="g14-blank inline-block min-w-[3rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1007" data-correct="G10G" onclick="fillBlank14(this)">＿</span></td></tr>
+                        <tr><td class="border border-slate-700 px-3 py-2">超過 187，220 以下</td><td class="border border-slate-700 px-3 py-2"><span class="g14-blank inline-block min-w-[3rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1008" data-correct="G10H" onclick="fillBlank14(this)">＿</span></td></tr>
+                        <tr><td class="border border-slate-700 px-3 py-2">超過 220，345 以下</td><td class="border border-slate-700 px-3 py-2"><span class="g14-blank inline-block min-w-[3rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1009" data-correct="G10I" onclick="fillBlank14(this)">＿</span></td></tr>
+                        <tr><td class="border border-slate-700 px-3 py-2">超過 345</td><td class="border border-slate-700 px-3 py-2"><span class="g14-blank inline-block min-w-[3rem] text-center font-black text-yellow-300 border-b-2 border-yellow-400 cursor-pointer px-1 mx-1 hover:bg-yellow-900/30 rounded" data-blank-id="1010" data-correct="G10J" onclick="fillBlank14(this)">＿</span></td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <!-- 第十組選項池 -->
+                <div class="mb-3 bg-slate-900/40 border border-cyan-800/30 rounded-xl p-4" id="g14-group10-opts-wrap">
+                  <h3 class="text-xs font-bold text-cyan-400 mb-2 flex items-center gap-2">
+                    <i data-lucide="table" class="w-4 h-4"></i> 第十組選項（點選後再點空格填入）
+                  </h3>
+                  <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-2" id="g14-options-10"></div>
+                  <div id="g14-selected-indicator-10" class="hidden mt-2 text-sm text-yellow-300 font-bold bg-yellow-900/20 border border-yellow-700 rounded-lg px-4 py-2">
+                    已選取：<span id="g14-selected-label-10"></span>　請點選題目中的空格填入，或再次點選取消。
+                  </div>
+                  <div class="mt-3 flex justify-end gap-3">
+                    <button onclick="checkGame14Group(10)" class="bg-cyan-700 hover:bg-cyan-600 text-white px-4 py-2 rounded-lg font-bold text-sm flex items-center gap-1.5">
+                      <i data-lucide="check-circle" class="w-4 h-4"></i> 確認第十組
+                    </button>
+                    <button onclick="showAnswer14Group(10)" class="text-slate-400 hover:text-white bg-slate-800 hover:bg-slate-700 px-3 py-2 rounded-lg border border-slate-700 text-sm">公布解答</button>
+                  </div>
+                </div>
                 <!-- 舊選項表（隱藏，保留相容性） -->
                 <div class="hidden"><div id="g14-options"></div></div>
                 <div id="g14-selected-indicator" class="hidden"><span id="g14-selected-label"></span></div>
 
-<!-- 第十組：是非題 -->
+<!-- 第十一組：是非題 -->
                 <div class="mb-3 bg-slate-900/40 border border-violet-800/30 rounded-xl p-4">
                   <h3 class="text-xs font-bold text-violet-400 mb-2 flex items-center gap-2">
-                    <i data-lucide="check-square" class="w-4 h-4"></i> 第十組：是非題（點選「是」或「否」作答）
+                    <i data-lucide="check-square" class="w-4 h-4"></i> 第十一組：是非題（點選「是」或「否」作答）
                   </h3>
                   <div id="g14-group10" class="g14-group">
                     <div class="space-y-3 mb-4">
@@ -1626,9 +1673,9 @@
                         </div>
                     </div>
                     <div class="mt-3 flex justify-end gap-3">
-                        <button onclick="showAnswer14Group(10)" class="text-slate-400 hover:text-white bg-slate-800 hover:bg-slate-700 px-3 py-2 rounded-lg border border-slate-700 text-sm">公布解答</button>
-                        <button onclick="checkGame14Group(10)" class="bg-violet-700 hover:bg-violet-600 text-white px-4 py-2 rounded-lg font-bold text-sm flex items-center gap-1.5">
-                          <i data-lucide="check-circle" class="w-4 h-4"></i> 確認第十組
+                        <button onclick="showAnswer14Group(11)" class="text-slate-400 hover:text-white bg-slate-800 hover:bg-slate-700 px-3 py-2 rounded-lg border border-slate-700 text-sm">公布解答</button>
+                        <button onclick="checkGame14Group(11)" class="bg-violet-700 hover:bg-violet-600 text-white px-4 py-2 rounded-lg font-bold text-sm flex items-center gap-1.5">
+                          <i data-lucide="check-circle" class="w-4 h-4"></i> 確認第十一組
                         </button>
                     </div>
                   </div>
@@ -2317,31 +2364,41 @@
                         <div id="g20e4-result" class="hidden mt-2 text-xs font-bold text-emerald-300">✅ 全對！燃燒四面體、滅火方法與常用設備都配對正確。</div>
                     </div>
 
-                    <!-- 5. 著火點排序 -->
+                    <!-- 5. 危險性判斷分類 -->
                     <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-4">
-                        <h3 class="text-sm font-bold text-orange-300 mb-2 flex items-center gap-2"><i data-lucide="thermometer" class="w-4 h-4"></i> 延伸小題⑤：閃火點、著火點、發火點溫度排序</h3>
-                        <p class="text-xs text-slate-400 mb-3">請將三個溫度特性依<strong class="text-orange-300">由低至高</strong>排列，點選字卡後點槽位放入。</p>
-                        <div class="flex gap-4">
-                            <div class="flex-1 space-y-2" id="g20b-slots">
-                                <div class="flex items-center gap-2">
-                                    <span class="text-xs text-slate-500 w-8 text-right">最低</span>
-                                    <div class="flex-1 min-h-[2.5rem] border-2 border-dashed border-slate-600 rounded-xl flex items-center justify-center text-slate-500 text-sm cursor-pointer hover:border-orange-500 transition" data-slot-id="1" onclick="placeG20b(1)">點此放入</div>
-                                </div>
-                                <div class="flex items-center gap-2">
-                                    <span class="text-xs text-slate-500 w-8 text-right">第2</span>
-                                    <div class="flex-1 min-h-[2.5rem] border-2 border-dashed border-slate-600 rounded-xl flex items-center justify-center text-slate-500 text-sm cursor-pointer hover:border-orange-500 transition" data-slot-id="2" onclick="placeG20b(2)">點此放入</div>
-                                </div>
-                                <div class="flex items-center gap-2">
-                                    <span class="text-xs text-slate-500 w-8 text-right">最高</span>
-                                    <div class="flex-1 min-h-[2.5rem] border-2 border-dashed border-slate-600 rounded-xl flex items-center justify-center text-slate-500 text-sm cursor-pointer hover:border-orange-500 transition" data-slot-id="3" onclick="placeG20b(3)">點此放入</div>
+                        <h3 class="text-sm font-bold text-orange-300 mb-2 flex items-center gap-2"><i data-lucide="flame" class="w-4 h-4"></i> 延伸小題⑤：以下數值越大是否越危險？</h3>
+                        <p class="text-xs text-slate-400 mb-3">請把字卡放入對應區域；同一區內順序不限。</p>
+                        <div id="g20b-cards" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-2 mb-4"></div>
+                        <div id="g20b-slots" class="grid lg:grid-cols-2 gap-4">
+                            <div class="rounded-xl border border-orange-700/50 bg-orange-950/20 p-3">
+                                <div class="text-sm font-black text-orange-200 mb-2">一、越大越危險</div>
+                                <div class="space-y-2">
+                                    <div class="g20b-slot min-h-[2.5rem] border-2 border-dashed border-slate-600 rounded-xl flex items-center justify-center text-slate-500 text-sm cursor-pointer hover:border-orange-500 transition" data-slot-id="greater-1" data-group="greater" onclick="placeG20b('greater-1')">點此放入</div>
+                                    <div class="g20b-slot min-h-[2.5rem] border-2 border-dashed border-slate-600 rounded-xl flex items-center justify-center text-slate-500 text-sm cursor-pointer hover:border-orange-500 transition" data-slot-id="greater-2" data-group="greater" onclick="placeG20b('greater-2')">點此放入</div>
+                                    <div class="g20b-slot min-h-[2.5rem] border-2 border-dashed border-slate-600 rounded-xl flex items-center justify-center text-slate-500 text-sm cursor-pointer hover:border-orange-500 transition" data-slot-id="greater-3" data-group="greater" onclick="placeG20b('greater-3')">點此放入</div>
+                                    <div class="g20b-slot min-h-[2.5rem] border-2 border-dashed border-slate-600 rounded-xl flex items-center justify-center text-slate-500 text-sm cursor-pointer hover:border-orange-500 transition" data-slot-id="greater-4" data-group="greater" onclick="placeG20b('greater-4')">點此放入</div>
+                                    <div class="g20b-slot min-h-[2.5rem] border-2 border-dashed border-slate-600 rounded-xl flex items-center justify-center text-slate-500 text-sm cursor-pointer hover:border-orange-500 transition" data-slot-id="greater-5" data-group="greater" onclick="placeG20b('greater-5')">點此放入</div>
+                                    <div class="g20b-slot min-h-[2.5rem] border-2 border-dashed border-slate-600 rounded-xl flex items-center justify-center text-slate-500 text-sm cursor-pointer hover:border-orange-500 transition" data-slot-id="greater-6" data-group="greater" onclick="placeG20b('greater-6')">點此放入</div>
                                 </div>
                             </div>
-                            <div class="flex-1 space-y-2" id="g20b-cards"></div>
+                            <div class="rounded-xl border border-cyan-700/50 bg-cyan-950/20 p-3">
+                                <div class="text-sm font-black text-cyan-200 mb-2">二、越小越危險</div>
+                                <div class="space-y-2">
+                                    <div class="g20b-slot min-h-[2.5rem] border-2 border-dashed border-slate-600 rounded-xl flex items-center justify-center text-slate-500 text-sm cursor-pointer hover:border-cyan-500 transition" data-slot-id="smaller-1" data-group="smaller" onclick="placeG20b('smaller-1')">點此放入</div>
+                                    <div class="g20b-slot min-h-[2.5rem] border-2 border-dashed border-slate-600 rounded-xl flex items-center justify-center text-slate-500 text-sm cursor-pointer hover:border-cyan-500 transition" data-slot-id="smaller-2" data-group="smaller" onclick="placeG20b('smaller-2')">點此放入</div>
+                                    <div class="g20b-slot min-h-[2.5rem] border-2 border-dashed border-slate-600 rounded-xl flex items-center justify-center text-slate-500 text-sm cursor-pointer hover:border-cyan-500 transition" data-slot-id="smaller-3" data-group="smaller" onclick="placeG20b('smaller-3')">點此放入</div>
+                                    <div class="g20b-slot min-h-[2.5rem] border-2 border-dashed border-slate-600 rounded-xl flex items-center justify-center text-slate-500 text-sm cursor-pointer hover:border-cyan-500 transition" data-slot-id="smaller-4" data-group="smaller" onclick="placeG20b('smaller-4')">點此放入</div>
+                                    <div class="g20b-slot min-h-[2.5rem] border-2 border-dashed border-slate-600 rounded-xl flex items-center justify-center text-slate-500 text-sm cursor-pointer hover:border-cyan-500 transition" data-slot-id="smaller-5" data-group="smaller" onclick="placeG20b('smaller-5')">點此放入</div>
+                                    <div class="g20b-slot min-h-[2.5rem] border-2 border-dashed border-slate-600 rounded-xl flex items-center justify-center text-slate-500 text-sm cursor-pointer hover:border-cyan-500 transition" data-slot-id="smaller-6" data-group="smaller" onclick="placeG20b('smaller-6')">點此放入</div>
+                                    <div class="g20b-slot min-h-[2.5rem] border-2 border-dashed border-slate-600 rounded-xl flex items-center justify-center text-slate-500 text-sm cursor-pointer hover:border-cyan-500 transition" data-slot-id="smaller-7" data-group="smaller" onclick="placeG20b('smaller-7')">點此放入</div>
+                                </div>
+                            </div>
                         </div>
-                        <div id="g20b-result" class="hidden mt-3 text-sm text-emerald-300 font-bold">✅ 正確！閃火點 ＜ 著火點 ＜ 發火點</div>
+                        <div class="mt-3 text-xs text-slate-500">提示：導電性越小越容易產生靜電；蒸氣壓越大越容易揮發。</div>
+                        <div id="g20b-result" class="hidden mt-3 text-sm text-emerald-300 font-bold">✅ 正確！已完成「越大越危險」與「越小越危險」分類。</div>
                         <div class="mt-3 flex justify-end gap-2">
                             <button onclick="initG20b()" class="text-slate-400 hover:text-white text-sm bg-slate-700 hover:bg-slate-600 px-4 py-2 rounded-lg transition">重置</button>
-                            <button onclick="checkG20b()" class="bg-orange-600 hover:bg-orange-500 text-white text-sm font-bold px-4 py-2 rounded-lg transition">驗證排序</button>
+                            <button onclick="checkG20b()" class="bg-orange-600 hover:bg-orange-500 text-white text-sm font-bold px-4 py-2 rounded-lg transition">驗證分類</button>
                         </div>
                     </div>
 
@@ -2938,49 +2995,113 @@
                         <tbody>
                             <tr class="bg-slate-800/50">
                                 <td class="border border-slate-600 px-3 py-3 text-center">
-                                    <div class="g27-slot text-slate-400 cursor-pointer rounded px-2 py-1 border border-dashed border-slate-600 hover:border-sky-400 transition" data-slot="1" data-correct="a" onclick="g27FillSlot(this)">1.___</div>
+                                    <div class="g27-slot text-slate-400 cursor-pointer rounded px-2 py-1 border border-dashed border-slate-600 hover:border-sky-400 transition" data-group="crane" data-slot="1" data-correct="a" onclick="g27FillSlot(this)">1.___</div>
                                 </td>
                                 <td class="border border-slate-600 px-3 py-3 text-center">
-                                    <div class="g27-slot text-slate-400 cursor-pointer rounded px-2 py-1 border border-dashed border-slate-600 hover:border-sky-400 transition" data-slot="2" data-correct="g" onclick="g27FillSlot(this)">2.___</div>
+                                    <div class="g27-slot text-slate-400 cursor-pointer rounded px-2 py-1 border border-dashed border-slate-600 hover:border-sky-400 transition" data-group="crane" data-slot="2" data-correct="g" onclick="g27FillSlot(this)">2.___</div>
                                 </td>
                                 <td class="border border-slate-600 px-3 py-3 text-center">
-                                    <div class="g27-slot text-slate-400 cursor-pointer rounded px-2 py-1 border border-dashed border-slate-600 hover:border-sky-400 transition" data-slot="3" data-correct="e" onclick="g27FillSlot(this)">3.___</div>
+                                    <div class="g27-slot text-slate-400 cursor-pointer rounded px-2 py-1 border border-dashed border-slate-600 hover:border-sky-400 transition" data-group="crane" data-slot="3" data-correct="e" onclick="g27FillSlot(this)">3.___</div>
                                 </td>
                                 <td class="border border-slate-600 px-3 py-2 text-center text-slate-300 text-xs">指揮統一訊號</td>
                                 <td class="border border-slate-600 px-3 py-3 text-center">
-                                    <div class="g27-slot text-slate-400 cursor-pointer rounded px-2 py-1 border border-dashed border-slate-600 hover:border-sky-400 transition" data-slot="4" data-correct="c" onclick="g27FillSlot(this)">4.___</div>
+                                    <div class="g27-slot text-slate-400 cursor-pointer rounded px-2 py-1 border border-dashed border-slate-600 hover:border-sky-400 transition" data-group="crane" data-slot="4" data-correct="c" onclick="g27FillSlot(this)">4.___</div>
                                 </td>
                             </tr>
                             <tr class="bg-slate-800/30">
                                 <td class="border border-slate-600 px-3 py-3 text-center">
-                                    <div class="g27-slot text-slate-400 cursor-pointer rounded px-2 py-1 border border-dashed border-slate-600 hover:border-sky-400 transition" data-slot="5" data-correct="b" onclick="g27FillSlot(this)">5.___</div>
+                                    <div class="g27-slot text-slate-400 cursor-pointer rounded px-2 py-1 border border-dashed border-slate-600 hover:border-sky-400 transition" data-group="crane" data-slot="5" data-correct="b" onclick="g27FillSlot(this)">5.___</div>
                                 </td>
                                 <td class="border border-slate-600 px-3 py-3 text-center">
-                                    <div class="g27-slot text-slate-400 cursor-pointer rounded px-2 py-1 border border-dashed border-slate-600 hover:border-sky-400 transition" data-slot="6" data-correct="h" onclick="g27FillSlot(this)">6.___</div>
+                                    <div class="g27-slot text-slate-400 cursor-pointer rounded px-2 py-1 border border-dashed border-slate-600 hover:border-sky-400 transition" data-group="crane" data-slot="6" data-correct="h" onclick="g27FillSlot(this)">6.___</div>
                                 </td>
                                 <td class="border border-slate-600 px-3 py-3 text-center">
-                                    <div class="g27-slot text-slate-400 cursor-pointer rounded px-2 py-1 border border-dashed border-slate-600 hover:border-sky-400 transition" data-slot="7" data-correct="f" onclick="g27FillSlot(this)">7.___</div>
+                                    <div class="g27-slot text-slate-400 cursor-pointer rounded px-2 py-1 border border-dashed border-slate-600 hover:border-sky-400 transition" data-group="crane" data-slot="7" data-correct="f" onclick="g27FillSlot(this)">7.___</div>
                                 </td>
                                 <td class="border border-slate-600 px-3 py-2 text-center text-slate-300 text-xs">嚴禁非相關人員進入吊舉物下方</td>
                                 <td class="border border-slate-600 px-3 py-3 text-center">
-                                    <div class="g27-slot text-slate-400 cursor-pointer rounded px-2 py-1 border border-dashed border-slate-600 hover:border-sky-400 transition" data-slot="8" data-correct="d" onclick="g27FillSlot(this)">8.___</div>
+                                    <div class="g27-slot text-slate-400 cursor-pointer rounded px-2 py-1 border border-dashed border-slate-600 hover:border-sky-400 transition" data-group="crane" data-slot="8" data-correct="d" onclick="g27FillSlot(this)">8.___</div>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                <!-- 選項 -->
-                <div class="mb-4">
-                    <p class="text-xs text-slate-400 mb-2 font-bold">▼ 點選選項後，再點上方表格的空格填入</p>
-                    <div class="flex flex-wrap gap-2" id="g27-options">
-                        <div class="g27-opt bg-slate-800 hover:bg-slate-700 text-white text-xs px-3 py-2 rounded-lg border border-slate-700 cursor-pointer transition" data-val="a" onclick="g27SelectOpt(this)">a. 開始吊運</div>
-                        <div class="g27-opt bg-slate-800 hover:bg-slate-700 text-white text-xs px-3 py-2 rounded-lg border border-slate-700 cursor-pointer transition" data-val="b" onclick="g27SelectOpt(this)">b. 吊運中</div>
-                        <div class="g27-opt bg-slate-800 hover:bg-slate-700 text-white text-xs px-3 py-2 rounded-lg border border-slate-700 cursor-pointer transition" data-val="c" onclick="g27SelectOpt(this)">c. 緊急送醫</div>
-                        <div class="g27-opt bg-slate-800 hover:bg-slate-700 text-white text-xs px-3 py-2 rounded-lg border border-slate-700 cursor-pointer transition" data-val="d" onclick="g27SelectOpt(this)">d. 虛驚事件</div>
-                        <div class="g27-opt bg-slate-800 hover:bg-slate-700 text-white text-xs px-3 py-2 rounded-lg border border-slate-700 cursor-pointer transition" data-val="e" onclick="g27SelectOpt(this)">e. 還沒接獲訊號，吊掛傷人</div>
-                        <div class="g27-opt bg-slate-800 hover:bg-slate-700 text-white text-xs px-3 py-2 rounded-lg border border-slate-700 cursor-pointer transition" data-val="f" onclick="g27SelectOpt(this)">f. 吊鏈斷裂</div>
-                        <div class="g27-opt bg-slate-800 hover:bg-slate-700 text-white text-xs px-3 py-2 rounded-lg border border-slate-700 cursor-pointer transition" data-val="g" onclick="g27SelectOpt(this)">g. 專人指揮作業</div>
-                        <div class="g27-opt bg-slate-800 hover:bg-slate-700 text-white text-xs px-3 py-2 rounded-lg border border-slate-700 cursor-pointer transition" data-val="h" onclick="g27SelectOpt(this)">h. 將物體吊掛移動</div>
+                <div class="mb-5 rounded-xl border border-slate-700 bg-slate-900/40 p-3">
+                    <h3 class="text-xs font-black text-sky-300 mb-2">題組一選項：吊運作業</h3>
+                    <p class="text-xs text-slate-500 mb-2">點選或拖曳字卡到上方題組一空格。</p>
+                    <div class="flex flex-wrap gap-2">
+                        <div class="g27-opt bg-slate-800 hover:bg-slate-700 text-white text-xs px-3 py-2 rounded-lg border border-slate-700 cursor-pointer transition" data-group="crane" data-val="a" onclick="g27SelectOpt(this)">a. 開始吊運</div>
+                        <div class="g27-opt bg-slate-800 hover:bg-slate-700 text-white text-xs px-3 py-2 rounded-lg border border-slate-700 cursor-pointer transition" data-group="crane" data-val="b" onclick="g27SelectOpt(this)">b. 吊運中</div>
+                        <div class="g27-opt bg-slate-800 hover:bg-slate-700 text-white text-xs px-3 py-2 rounded-lg border border-slate-700 cursor-pointer transition" data-group="crane" data-val="c" onclick="g27SelectOpt(this)">c. 緊急送醫</div>
+                        <div class="g27-opt bg-slate-800 hover:bg-slate-700 text-white text-xs px-3 py-2 rounded-lg border border-slate-700 cursor-pointer transition" data-group="crane" data-val="d" onclick="g27SelectOpt(this)">d. 虛驚事件</div>
+                        <div class="g27-opt bg-slate-800 hover:bg-slate-700 text-white text-xs px-3 py-2 rounded-lg border border-slate-700 cursor-pointer transition" data-group="crane" data-val="e" onclick="g27SelectOpt(this)">e. 還沒接獲訊號，吊掛傷人</div>
+                        <div class="g27-opt bg-slate-800 hover:bg-slate-700 text-white text-xs px-3 py-2 rounded-lg border border-slate-700 cursor-pointer transition" data-group="crane" data-val="f" onclick="g27SelectOpt(this)">f. 吊鏈斷裂</div>
+                        <div class="g27-opt bg-slate-800 hover:bg-slate-700 text-white text-xs px-3 py-2 rounded-lg border border-slate-700 cursor-pointer transition" data-group="crane" data-val="g" onclick="g27SelectOpt(this)">g. 專人指揮作業</div>
+                        <div class="g27-opt bg-slate-800 hover:bg-slate-700 text-white text-xs px-3 py-2 rounded-lg border border-slate-700 cursor-pointer transition" data-group="crane" data-val="h" onclick="g27SelectOpt(this)">h. 將物體吊掛移動</div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <h3 class="text-sm font-black text-cyan-300 mb-2">題組二：油槽清理作業</h3>
+                    <p class="text-xs text-slate-400 mb-2">油槽清理作業分為 2 個工作步驟，請依下列項目配對至安全作業標準中。</p>
+                </div>
+                <div class="overflow-x-auto mb-4">
+                    <table class="w-full text-sm border-collapse">
+                        <thead>
+                            <tr class="bg-slate-700 text-white">
+                                <th class="border border-slate-600 px-3 py-2">工作步驟</th>
+                                <th class="border border-slate-600 px-3 py-2">工作方法</th>
+                                <th class="border border-slate-600 px-3 py-2">不安全因素</th>
+                                <th class="border border-slate-600 px-3 py-2">安全措施</th>
+                                <th class="border border-slate-600 px-3 py-2">緊急事故處理</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-slate-800/50">
+                                <td class="border border-slate-600 px-3 py-3 text-center text-slate-200 font-bold">打開人孔</td>
+                                <td class="border border-slate-600 px-3 py-3 text-center">
+                                    <div class="g27-slot text-slate-400 cursor-pointer rounded px-2 py-1 border border-dashed border-slate-600 hover:border-sky-400 transition" data-group="tank" data-slot="9" data-correct="B" onclick="g27FillSlot(this)">9.___</div>
+                                </td>
+                                <td class="border border-slate-600 px-3 py-3 text-center">
+                                    <div class="g27-slot text-slate-400 cursor-pointer rounded px-2 py-1 border border-dashed border-slate-600 hover:border-sky-400 transition" data-group="tank" data-slot="10" data-correct="A" onclick="g27FillSlot(this)">10.___</div>
+                                </td>
+                                <td class="border border-slate-600 px-3 py-3 text-center">
+                                    <div class="g27-slot text-slate-400 cursor-pointer rounded px-2 py-1 border border-dashed border-slate-600 hover:border-sky-400 transition" data-group="tank" data-slot="11" data-correct="H" onclick="g27FillSlot(this)">11.___</div>
+                                </td>
+                                <td class="border border-slate-600 px-3 py-3 text-center">
+                                    <div class="g27-slot text-slate-400 cursor-pointer rounded px-2 py-1 border border-dashed border-slate-600 hover:border-sky-400 transition" data-group="tank" data-slot="12" data-correct="G" onclick="g27FillSlot(this)">12.___</div>
+                                </td>
+                            </tr>
+                            <tr class="bg-slate-800/30">
+                                <td class="border border-slate-600 px-3 py-3 text-center text-slate-200 font-bold">抽出存油</td>
+                                <td class="border border-slate-600 px-3 py-3 text-center">
+                                    <div class="g27-slot text-slate-400 cursor-pointer rounded px-2 py-1 border border-dashed border-slate-600 hover:border-sky-400 transition" data-group="tank" data-slot="13" data-correct="I" onclick="g27FillSlot(this)">13.___</div>
+                                </td>
+                                <td class="border border-slate-600 px-3 py-3 text-center">
+                                    <div class="g27-slot text-slate-400 cursor-pointer rounded px-2 py-1 border border-dashed border-slate-600 hover:border-sky-400 transition" data-group="tank" data-slot="14" data-correct="C" onclick="g27FillSlot(this)">14.___</div>
+                                </td>
+                                <td class="border border-slate-600 px-3 py-3 text-center">
+                                    <div class="g27-slot text-slate-400 cursor-pointer rounded px-2 py-1 border border-dashed border-slate-600 hover:border-sky-400 transition" data-group="tank" data-slot="15" data-correct="E" onclick="g27FillSlot(this)">15.___</div>
+                                </td>
+                                <td class="border border-slate-600 px-3 py-3 text-center">
+                                    <div class="g27-slot text-slate-400 cursor-pointer rounded px-2 py-1 border border-dashed border-slate-600 hover:border-sky-400 transition" data-group="tank" data-slot="16" data-correct="D" onclick="g27FillSlot(this)">16.___</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="mb-4 rounded-xl border border-slate-700 bg-slate-900/40 p-3">
+                    <h3 class="text-xs font-black text-cyan-300 mb-2">題組二選項：油槽清理作業</h3>
+                    <p class="text-xs text-slate-500 mb-2">點選或拖曳字卡到上方題組二空格。</p>
+                    <div class="flex flex-wrap gap-2">
+                        <div class="g27-opt bg-slate-800 hover:bg-slate-700 text-white text-xs px-3 py-2 rounded-lg border border-slate-700 cursor-pointer transition" data-group="tank" data-val="A" onclick="g27SelectOpt(this)">A. 作業人員吸入有害氣體</div>
+                        <div class="g27-opt bg-slate-800 hover:bg-slate-700 text-white text-xs px-3 py-2 rounded-lg border border-slate-700 cursor-pointer transition" data-group="tank" data-val="B" onclick="g27SelectOpt(this)">B. 鬆開螺栓打開人孔蓋</div>
+                        <div class="g27-opt bg-slate-800 hover:bg-slate-700 text-white text-xs px-3 py-2 rounded-lg border border-slate-700 cursor-pointer transition" data-group="tank" data-val="C" onclick="g27SelectOpt(this)">C. 氣動抽油，產生靜電</div>
+                        <div class="g27-opt bg-slate-800 hover:bg-slate-700 text-white text-xs px-3 py-2 rounded-lg border border-slate-700 cursor-pointer transition" data-group="tank" data-val="D" onclick="g27SelectOpt(this)">D. 產生爆炸受傷，緊急送醫</div>
+                        <div class="g27-opt bg-slate-800 hover:bg-slate-700 text-white text-xs px-3 py-2 rounded-lg border border-slate-700 cursor-pointer transition" data-group="tank" data-val="E" onclick="g27SelectOpt(this)">E. 接地</div>
+                        <div class="g27-opt bg-slate-800 hover:bg-slate-700 text-white text-xs px-3 py-2 rounded-lg border border-slate-700 cursor-pointer transition" data-group="tank" data-val="F" onclick="g27SelectOpt(this)">F. 虛驚事故</div>
+                        <div class="g27-opt bg-slate-800 hover:bg-slate-700 text-white text-xs px-3 py-2 rounded-lg border border-slate-700 cursor-pointer transition" data-group="tank" data-val="G" onclick="g27SelectOpt(this)">G. 吸入有害氣體，緊急送醫</div>
+                        <div class="g27-opt bg-slate-800 hover:bg-slate-700 text-white text-xs px-3 py-2 rounded-lg border border-slate-700 cursor-pointer transition" data-group="tank" data-val="H" onclick="g27SelectOpt(this)">H. 作業人員穿戴呼吸防護具</div>
+                        <div class="g27-opt bg-slate-800 hover:bg-slate-700 text-white text-xs px-3 py-2 rounded-lg border border-slate-700 cursor-pointer transition" data-group="tank" data-val="I" onclick="g27SelectOpt(this)">I. 將存油抽至另一座儲槽</div>
                     </div>
                 </div>
                 <div class="mt-6 flex justify-between gap-3 flex-wrap">
@@ -5566,7 +5687,18 @@ function checkGame10() {
             { key: 'G9E', label: 'E：3' },
             { key: 'G9F', label: 'F：10' },
             { key: 'G9G', label: 'G：1' },
-            { key: 'G9H', label: 'H：2.5' }
+            { key: 'G9H', label: 'H：2.5' },
+            // ===== 第十組：高壓電路接近界線距離 =====
+            { key: 'G10A', label: 'A：20' },
+            { key: 'G10B', label: 'B：30' },
+            { key: 'G10C', label: 'C：50' },
+            { key: 'G10D', label: 'D：60' },
+            { key: 'G10E', label: 'E：90' },
+            { key: 'G10F', label: 'F：120' },
+            { key: 'G10G', label: 'G：140' },
+            { key: 'G10H', label: 'H：160' },
+            { key: 'G10I', label: 'I：200' },
+            { key: 'G10J', label: 'J：300' }
         ];
 
         const g14DistractorOptions = [
@@ -5578,7 +5710,8 @@ function checkGame10() {
             { key: 'G14D6A', label: '3' }, { key: 'G14D6B', label: '7.5' }, { key: 'G14D6C', label: '擋土支撐' },
             { key: 'G14D7A', label: '3.5' }, { key: 'G14D7B', label: '1.5' }, { key: 'G14D7C', label: '30' },
             { key: 'G14D8A', label: '10' }, { key: 'G14D8B', label: '7.5' }, { key: 'G14D8C', label: '40' },
-            { key: 'G14D9A', label: '1.5' }, { key: 'G14D9B', label: '7%' }, { key: 'G14D9C', label: '5.5' }
+            { key: 'G14D9A', label: '1.5' }, { key: 'G14D9B', label: '7%' }, { key: 'G14D9C', label: '5.5' },
+            { key: 'G14D10A', label: '40' }, { key: 'G14D10B', label: '70' }, { key: 'G14D10C', label: '100' }
         ];
 
         function g14FindOption(key) {
@@ -5614,6 +5747,7 @@ function checkGame10() {
             7: ['G7A','G7B','G7C','G7D','G7E','G7F','G7G','G7H','G7I'],
             8: ['G8A','G8B','G8C','G8D','G8E','G8F','G8G','G8H'],
             9: ['G9A','G9B','G9C','G9D','G9E','G9F','G9G','G9H'],
+            10: ['G10A','G10B','G10C','G10D','G10E','G10F','G10G','G10H','G10I','G10J'],
             distractors: {
                 1: ['G14D1A','G14D1B','G14D1C'],
                 2: ['G14D2A','G14D2B','G14D2C'],
@@ -5623,7 +5757,8 @@ function checkGame10() {
                 6: ['G14D6A','G14D6B','G14D6C'],
                 7: ['G14D7A','G14D7B','G14D7C'],
                 8: ['G14D8A','G14D8B','G14D8C'],
-                9: ['G14D9A','G14D9B','G14D9C']
+                9: ['G14D9A','G14D9B','G14D9C'],
+                10: ['G14D10A','G14D10B','G14D10C']
             }
         };
         // 各組空格 blank-id 清單
@@ -5636,7 +5771,8 @@ function checkGame10() {
             6: ['601','602','603','604','605','606','607','608','609'],
             7: ['701','702','703','704','705','706','707','708','709','710'],
             8: ['801','802','803','804','805','806','807','808','809'],
-            9: ['901','902','903','904','905','906','907','908']
+            9: ['901','902','903','904','905','906','907','908'],
+            10: ['1001','1002','1003','1004','1005','1006','1007','1008','1009','1010']
         };
 
         function _g14RenderGroupOpts(grp) {
@@ -5647,7 +5783,8 @@ function checkGame10() {
             const colorMap = {
                 1:'hover:bg-violet-900/40', 2:'hover:bg-amber-900/40', 3:'hover:bg-emerald-900/40',
                 4:'hover:bg-teal-900/40',   5:'hover:bg-sky-900/40',   6:'hover:bg-orange-900/40',
-                7:'hover:bg-indigo-900/40', 8:'hover:bg-rose-900/40',  9:'hover:bg-lime-900/40'
+                7:'hover:bg-indigo-900/40', 8:'hover:bg-rose-900/40',  9:'hover:bg-lime-900/40',
+                10:'hover:bg-cyan-900/40'
             };
             keys.forEach(key => {
                 const opt = g14FindOption(key);
@@ -5678,7 +5815,7 @@ function checkGame10() {
             g14Selected = null;
             g14ActiveGroup = 0;
             g14DragKey = null;
-            [1,2,3,4,5,6,7,8,9].forEach(g => _g14RenderGroupOpts(g));
+            [1,2,3,4,5,6,7,8,9,10].forEach(g => _g14RenderGroupOpts(g));
             // Reset blanks and bind drag events
             document.querySelectorAll('.g14-blank').forEach(blank => {
                 blank.innerText = '＿';
@@ -5829,7 +5966,7 @@ function checkGame10() {
 
         function checkGame14Group(grp) {
             let correct = 0, total = 0;
-            if (grp === 10) {
+            if (grp === 11) {
                 // 是非題
                 const tfAns = { 1: true, 2: true, 3: true, 4: true, 5: true };
                 total = 5;
@@ -5880,7 +6017,7 @@ function checkGame10() {
         }
 
         function showAnswer14Group(grp) {
-            if (grp === 10) {
+            if (grp === 11) {
                 const tfAns = { 1: true, 2: true, 3: true, 4: true, 5: true };
                 for (const [qn, exp] of Object.entries(tfAns)) {
                     const tBtn = document.getElementById('g14tf-' + qn + '-T');
@@ -5892,7 +6029,7 @@ function checkGame10() {
                     const ansEl = document.getElementById('g14tf-' + qn + '-ans');
                     if (ansEl) ansEl.classList.remove('hidden');
                 }
-                showToast('📖 第10組（是非題）解答已公布！', 'info');
+                showToast('📖 第11組（是非題）解答已公布！', 'info');
                 return;
             }
             const blankIds = g14GroupBlanks[grp];
@@ -5929,7 +6066,7 @@ function checkGame10() {
             } else {
                 // 檢查是否有任一組全對
                 let anyGroupDone = false;
-                [1,2,3,4,5,6,7,8,9].forEach(g => {
+                [1,2,3,4,5,6,7,8,9,10].forEach(g => {
                     if (!g14GroupBlanks[g]) return;
                     let gCorrect = 0;
                     g14GroupBlanks[g].forEach(bid => {
@@ -7427,21 +7564,46 @@ function checkGame10() {
             initG20e4();
         }
 
-        // ===== 延伸小題⑤ 著火點排序 =====
+        // ===== 延伸小題⑤ 危險性判斷分類 =====
         const g20bItems = [
-            { id: 1, label: '閃火點', correctSlot: 1 },
-            { id: 2, label: '著火點', correctSlot: 2 },
-            { id: 3, label: '發火點', correctSlot: 3 }
+            { id: 'range', label: '燃燒範圍(爆炸範圍)', group: 'greater' },
+            { id: 'vaporPressure', label: '蒸氣壓', group: 'greater' },
+            { id: 'burningVelocity', label: '燃燒速度', group: 'greater' },
+            { id: 'heatOfCombustion', label: '燃燒熱', group: 'greater' },
+            { id: 'flamePropagation', label: '火焰傳播速度', group: 'greater' },
+            { id: 'dangerDegree', label: '危險度', group: 'greater' },
+            { id: 'lowerLimit', label: '燃燒下限(爆炸下限)', group: 'smaller' },
+            { id: 'flashPoint', label: '閃火點', group: 'smaller' },
+            { id: 'ignitionPoint', label: '著火點', group: 'smaller' },
+            { id: 'boilingPoint', label: '沸點', group: 'smaller' },
+            { id: 'specificHeat', label: '比熱', group: 'smaller' },
+            { id: 'minIgnitionEnergy', label: '最小著火能量', group: 'smaller' },
+            { id: 'conductivity', label: '導電性', group: 'smaller' }
         ];
-        let g20bSelCard = null, g20bSlotData = { 1: null, 2: null, 3: null };
+        let g20bSelCard = null, g20bSlotData = {};
+
+        function g20bSlotClass(group) {
+            if (group === 'smaller') {
+                return 'g20b-slot min-h-[2.5rem] border-2 border-dashed border-slate-600 rounded-xl flex items-center justify-center text-slate-500 text-sm cursor-pointer hover:border-cyan-500 transition';
+            }
+            return 'g20b-slot min-h-[2.5rem] border-2 border-dashed border-slate-600 rounded-xl flex items-center justify-center text-slate-500 text-sm cursor-pointer hover:border-orange-500 transition';
+        }
+
+        function g20bFilledClass(group) {
+            if (group === 'smaller') {
+                return 'g20b-slot min-h-[2.5rem] border-2 border-cyan-500 bg-cyan-950/30 rounded-xl flex items-center justify-center text-cyan-100 text-sm font-bold cursor-pointer hover:border-cyan-400 transition';
+            }
+            return 'g20b-slot min-h-[2.5rem] border-2 border-orange-500 bg-orange-950/30 rounded-xl flex items-center justify-center text-orange-100 text-sm font-bold cursor-pointer hover:border-orange-400 transition';
+        }
 
         function initG20b() {
-            g20bSelCard = null; g20bSlotData = { 1: null, 2: null, 3: null };
+            g20bSelCard = null; g20bSlotData = {};
             const res = document.getElementById('g20b-result');
             if (res) res.classList.add('hidden');
-            [1,2,3].forEach(i => {
-                const slot = document.querySelector('#g20b-slots [data-slot-id="' + i + '"]');
-                if (slot) { slot.innerText = '點此放入'; slot.className = 'flex-1 min-h-[2.5rem] border-2 border-dashed border-slate-600 rounded-xl flex items-center justify-center text-slate-500 text-sm cursor-pointer hover:border-orange-500 transition'; }
+            document.querySelectorAll('.g20b-slot').forEach(slot => {
+                slot.innerText = '點此放入';
+                slot.dataset.cardId = '';
+                slot.className = g20bSlotClass(slot.dataset.group);
             });
             const cardsDiv = document.getElementById('g20b-cards');
             if (!cardsDiv) return;
@@ -7450,7 +7612,7 @@ function checkGame10() {
                 const card = document.createElement('div');
                 card.id = 'g20b-card-' + item.id;
                 card.dataset.id = item.id;
-                card.className = 'g20b-card bg-orange-900/20 border border-orange-700/50 text-orange-100 text-sm px-4 py-2.5 rounded-xl cursor-pointer transition hover:bg-orange-900/40 font-bold text-center';
+                card.className = 'g20b-card bg-slate-900/70 border border-slate-600 text-slate-100 text-sm px-4 py-2.5 rounded-xl cursor-pointer transition hover:bg-slate-800 font-bold text-center';
                 card.innerText = item.label;
                 card.onclick = () => selectG20bCard(card);
                 cardsDiv.appendChild(card);
@@ -7461,7 +7623,7 @@ function checkGame10() {
             if (card.classList.contains('opacity-40')) return;
             soundClick();
             document.querySelectorAll('.g20b-card').forEach(c => c.classList.remove('ring-2','ring-orange-400','scale-105'));
-            const id = parseInt(card.dataset.id);
+            const id = card.dataset.id;
             if (g20bSelCard === id) { g20bSelCard = null; return; }
             g20bSelCard = id;
             card.classList.add('ring-2','ring-orange-400','scale-105');
@@ -7475,39 +7637,51 @@ function checkGame10() {
                 const oldCard = document.getElementById('g20b-card-' + oldId);
                 if (oldCard) { oldCard.classList.remove('opacity-40','pointer-events-none'); }
             }
+            Object.keys(g20bSlotData).forEach(existingSlotId => {
+                if (g20bSlotData[existingSlotId] !== g20bSelCard || existingSlotId === slotId) return;
+                const oldSlot = document.querySelector('#g20b-slots [data-slot-id="' + existingSlotId + '"]');
+                if (oldSlot) {
+                    oldSlot.innerText = '點此放入';
+                    oldSlot.dataset.cardId = '';
+                    oldSlot.className = g20bSlotClass(oldSlot.dataset.group);
+                }
+                delete g20bSlotData[existingSlotId];
+            });
             g20bSlotData[slotId] = g20bSelCard;
             const item = g20bItems.find(i => i.id === g20bSelCard);
             const slot = document.querySelector('#g20b-slots [data-slot-id="' + slotId + '"]');
+            if (!slot || !item) return;
             slot.innerText = item.label;
-            slot.classList.add('bg-orange-900/40','border-orange-500','text-orange-200','font-bold');
-            slot.classList.remove('text-slate-500','border-dashed','border-slate-600');
+            slot.dataset.cardId = item.id;
+            slot.className = g20bFilledClass(slot.dataset.group);
             const card = document.getElementById('g20b-card-' + g20bSelCard);
             if (card) { card.classList.add('opacity-40','pointer-events-none'); card.classList.remove('ring-2','ring-orange-400','scale-105'); }
             g20bSelCard = null;
                     setTimeout(lsSave, 150);
         }
         function checkG20b() {
-            let correct = 0;
-            [1,2,3].forEach(slotId => {
-                const slot = document.querySelector('#g20b-slots [data-slot-id="' + slotId + '"]');
+            let correct = 0, total = 0;
+            document.querySelectorAll('.g20b-slot').forEach(slot => {
+                total++;
+                const slotId = slot.dataset.slotId;
                 const placedId = g20bSlotData[slotId];
                 const item = g20bItems.find(i => i.id === placedId);
-                if (item && item.correctSlot === slotId) {
+                if (item && item.group === slot.dataset.group) {
                     slot.classList.add('border-emerald-500','bg-emerald-950/30','text-emerald-300');
-                    slot.classList.remove('border-orange-500','bg-orange-900/40','text-orange-200');
+                    slot.classList.remove('border-orange-500','border-cyan-500','bg-orange-950/30','bg-cyan-950/30','text-orange-100','text-cyan-100');
                     correct++;
                 } else if (placedId) {
                     slot.classList.add('border-rose-500','bg-rose-950/30','text-rose-300');
-                    slot.classList.remove('border-orange-500','bg-orange-900/40','text-orange-200');
+                    slot.classList.remove('border-orange-500','border-cyan-500','bg-orange-950/30','bg-cyan-950/30','text-orange-100','text-cyan-100');
                 }
             });
-            if (correct === 3) {
+            if (correct === total) {
                 soundSuccess();
                 document.getElementById('g20b-result').classList.remove('hidden');
-                showToast('🎉 排序正確！閃火點 ＜ 著火點 ＜ 發火點','success');
+                showToast('🎉 分類正確！','success');
             } else {
                 soundError();
-                showToast('❌ 答對 ' + correct + '/3，請修正紅色槽位！','error');
+                showToast('❌ 答對 ' + correct + '/' + total + '，請修正紅色槽位！','error');
             }
         }
 
@@ -8094,17 +8268,20 @@ function checkGame10() {
             });
             const g20e4Res = document.getElementById('g20e4-result');
             if (g20e4Res) g20e4Res.classList.remove('hidden');
-            // 延伸小題⑤（g20b）：直接填入排序槽
-            const g20bAns = { 1: 1, 2: 2, 3: 3 }; // 閃火點=1, 著火點=2, 發火點=3
-            const g20bLabels = { 1: '閃火點', 2: '著火點', 3: '發火點' };
-            [1,2,3].forEach(slotId => {
-                const slot = document.querySelector('#g20b-slots [data-slot-id="' + slotId + '"]');
-                if (slot) {
-                    slot.innerText = g20bLabels[slotId];
-                    slot.classList.add('bg-emerald-900/40','border-emerald-500','text-emerald-300','font-bold');
-                    slot.classList.remove('text-slate-500','border-dashed','border-slate-600');
-                    g20bSlotData[slotId] = slotId;
-                }
+            // 延伸小題⑤（g20b）：直接填入兩區分類
+            ['greater', 'smaller'].forEach(group => {
+                const items = g20bItems.filter(item => item.group === group);
+                const slots = Array.from(document.querySelectorAll('.g20b-slot[data-group="' + group + '"]'));
+                items.forEach((item, idx) => {
+                    const slot = slots[idx];
+                    if (!slot) return;
+                    slot.innerText = item.label;
+                    slot.dataset.cardId = item.id;
+                    slot.className = 'g20b-slot min-h-[2.5rem] border-2 border-emerald-500 bg-emerald-950/30 rounded-xl flex items-center justify-center text-emerald-300 text-sm font-bold cursor-pointer hover:border-emerald-400 transition';
+                    g20bSlotData[slot.dataset.slotId] = item.id;
+                    const card = document.getElementById('g20b-card-' + item.id);
+                    if (card) card.classList.add('opacity-40','pointer-events-none');
+                });
             });
             const g20bRes = document.getElementById('g20b-result');
             if (g20bRes) g20bRes.classList.remove('hidden');
@@ -9215,11 +9392,27 @@ function exportSave() {
                     _lsRestoreBlanks('.g20e1-blank', state.g20e1, 'blankId');
                     _lsRestoreBlanks('.g20e2-blank', state.g20e2, 'blankId');
                     _lsRestoreBlanks('.g20e3-blank', state.g20e3, 'blankId');
-                    _lsRestoreSlotData(g20bSlotData, typeof g20bItems !== 'undefined' ? g20bItems : [], '#g20b-slots', state.g20bSlotData);
+                    _lsRestoreG20b(state.g20bSlotData);
                 }
             } catch(e) {
                 console.warn('還原關卡 ' + gameNum + ' 失敗:', e);
             }
+        }
+
+        function _lsRestoreG20b(data) {
+            if (!data || typeof g20bItems === 'undefined') return;
+            Object.keys(data).forEach(slotId => {
+                const cardId = data[slotId];
+                const slot = document.querySelector('#g20b-slots [data-slot-id="' + slotId + '"]');
+                const item = g20bItems.find(i => i.id === cardId);
+                if (!slot || !item) return;
+                g20bSlotData[slotId] = cardId;
+                slot.innerText = item.label;
+                slot.dataset.cardId = item.id;
+                slot.className = g20bFilledClass(slot.dataset.group);
+                const card = document.getElementById('g20b-card-' + item.id);
+                if (card) card.classList.add('opacity-40','pointer-events-none');
+            });
         }
 
         function _lsRestoreSlots(sel, data, keyAttr, poolId) {
@@ -10186,6 +10379,9 @@ function exportSave() {
 
         // ===== 第 27 關：五欄式安全作業標準配合題 =====
         let g27Selected = null;
+        function g27SelectedValue() {
+            return g27Selected && g27Selected.val ? g27Selected.val : null;
+        }
         function initGame27() {
             g27Selected = null;
             document.querySelectorAll('.g27-slot').forEach(s => {
@@ -10194,11 +10390,16 @@ function exportSave() {
                 s.className = 'g27-slot text-slate-400 cursor-pointer rounded px-2 py-1 border border-dashed border-slate-600 hover:border-sky-400 transition';
                 delete s.dataset.filled;
                 // 槽位拖曳目標
-                s.addEventListener('dragover', (e) => { if (_dragData && _dragData.type === 'g27') { e.preventDefault(); s.classList.add('drag-over'); } });
+                s.addEventListener('dragover', (e) => { if (_dragData && _dragData.type === 'g27' && _dragData.group === s.dataset.group) { e.preventDefault(); s.classList.add('drag-over'); } });
                 s.addEventListener('dragleave', () => { s.classList.remove('drag-over'); });
                 s.addEventListener('drop', (e) => {
                     e.preventDefault(); s.classList.remove('drag-over');
                     if (!_dragData || _dragData.type !== 'g27') return;
+                    if (_dragData.group !== s.dataset.group) {
+                        showToast('這張字卡屬於另一個題組，請放到同題組空格。', 'error');
+                        _dragData = null;
+                        return;
+                    }
                     soundClick();
                     s.innerText = g27Labels[_dragData.id] || _dragData.id;
                     s.dataset.filled = _dragData.id;
@@ -10212,7 +10413,7 @@ function exportSave() {
                 o.setAttribute('draggable', 'true');
                 o.addEventListener('dragstart', (e) => {
                     triggerTimer();
-                    _dragData = { elem: o, type: 'g27', id: o.dataset.val, text: o.innerText };
+                    _dragData = { elem: o, type: 'g27', id: o.dataset.val, text: o.innerText, group: o.dataset.group };
                     o.classList.add('dragging');
                     e.dataTransfer.effectAllowed = 'move';
                     e.dataTransfer.setData('text/plain', o.dataset.val);
@@ -10225,14 +10426,25 @@ function exportSave() {
             soundClick();
             document.querySelectorAll('.g27-opt').forEach(o => o.classList.remove('ring-2','ring-sky-400','bg-sky-900/40'));
             el.classList.add('ring-2','ring-sky-400','bg-sky-900/40');
-            g27Selected = el.dataset.val;
+            g27Selected = { val: el.dataset.val, group: el.dataset.group };
         }
-        const g27Labels = { a:'開始吊運', b:'吊運中', c:'緊急送醫', d:'虛驚事件', e:'還沒接獲訊號，吊掛傷人', f:'吊鏈斷裂', g:'專人指揮作業', h:'將物體吊掛移動' };
+        const g27Labels = {
+            a:'開始吊運', b:'吊運中', c:'緊急送醫', d:'虛驚事件',
+            e:'還沒接獲訊號，吊掛傷人', f:'吊鏈斷裂', g:'專人指揮作業', h:'將物體吊掛移動',
+            A:'作業人員吸入有害氣體', B:'鬆開螺栓打開人孔蓋', C:'氣動抽油，產生靜電',
+            D:'產生爆炸受傷，緊急送醫', E:'接地', F:'虛驚事故',
+            G:'吸入有害氣體，緊急送醫', H:'作業人員穿戴呼吸防護具', I:'將存油抽至另一座儲槽'
+        };
         function g27FillSlot(el) {
-            if (!g27Selected) { showToast('請先點選下方選項！', 'info'); return; }
+            const selectedVal = g27SelectedValue();
+            if (!selectedVal) { showToast('請先點選下方選項！', 'info'); return; }
+            if (g27Selected.group !== el.dataset.group) {
+                showToast('這張字卡屬於另一個題組，請填到同題組空格。', 'error');
+                return;
+            }
             soundClick();
-            el.innerText = g27Labels[g27Selected] || g27Selected;
-            el.dataset.filled = g27Selected;
+            el.innerText = g27Labels[selectedVal] || selectedVal;
+            el.dataset.filled = selectedVal;
             el.className = 'g27-slot text-sky-300 font-bold cursor-pointer rounded px-2 py-1 border border-sky-500 bg-sky-900/20 transition';
         }
         function checkGame27() {
@@ -10253,7 +10465,9 @@ function exportSave() {
             // 直接填入所有空格
             const g27AnsMap = {
                 '1': 'a', '2': 'g', '3': 'e', '4': 'c',
-                '5': 'b', '6': 'h', '7': 'f', '8': 'd'
+                '5': 'b', '6': 'h', '7': 'f', '8': 'd',
+                '9': 'B', '10': 'A', '11': 'H', '12': 'G',
+                '13': 'I', '14': 'C', '15': 'E', '16': 'D'
             };
             document.querySelectorAll('.g27-slot').forEach(s => {
                 const num = s.dataset.slot;
