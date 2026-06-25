@@ -418,6 +418,9 @@
                     <div id="cloud-sync-status" class="rounded-lg border border-slate-700 bg-slate-950/60 px-3 py-2 text-sm text-slate-300">
                         尚未同步
                     </div>
+                    <p class="text-xs text-slate-500 leading-relaxed">
+                        自動雲端存檔：輸入同步碼後，作答變動會先存到本機，約 1 分鐘後自動上傳；頁面開著時每 5 分鐘也會補傳一次。
+                    </p>
                 </div>
             </div>
         </div>
@@ -8634,6 +8637,7 @@ function checkGame10() {
             const savedAt = lsLoad();
             safeCreateIcons();
             buildMenu();
+            startCloudAutoSaveInterval();
             if (savedAt) {
                 showToast("📂 已自動載入存檔（" + savedAt + "）", "success");
                 updateTrophyCount();
@@ -8823,6 +8827,12 @@ function checkGame10() {
         const SUPABASE_URL = 'https://yizmpwezsqjrhkbffaip.supabase.co';
         const SUPABASE_KEY = 'sb_publishable_ffMchM8NFF5sjoD5OObKSQ_r_jVKb_K';
         const SUPABASE_TABLE = 'safety_master_saves';
+        const CLOUD_AUTO_SAVE_DEBOUNCE_MS = 60 * 1000;
+        const CLOUD_AUTO_SAVE_INTERVAL_MS = 5 * 60 * 1000;
+        let _cloudAutoSaveTimer = null;
+        let _cloudAutoSaveDirty = false;
+        let _cloudAutoSaveInFlight = false;
+        let _cloudAutoSaveSuppress = false;
 
         function safeJsonParse(raw, fallback = null) {
             if (raw == null || raw === '') return fallback;
@@ -8961,13 +8971,51 @@ function checkGame10() {
 
         function setCloudSyncStatus(message, type = 'info') {
             const el = document.getElementById('cloud-sync-status');
-            if (!el) return;
-            const color = type === 'success' ? 'text-emerald-200 border-emerald-600/50 bg-emerald-950/30'
-                : type === 'error' ? 'text-rose-200 border-rose-600/50 bg-rose-950/30'
-                : 'text-slate-300 border-slate-700 bg-slate-950/60';
-            el.className = 'rounded-lg border px-3 py-2 text-sm ' + color;
-            el.innerText = message;
+            if (el) {
+                const color = type === 'success' ? 'text-emerald-200 border-emerald-600/50 bg-emerald-950/30'
+                    : type === 'error' ? 'text-rose-200 border-rose-600/50 bg-rose-950/30'
+                    : 'text-slate-300 border-slate-700 bg-slate-950/60';
+                el.className = 'rounded-lg border px-3 py-2 text-sm ' + color;
+                el.innerText = message;
+            }
             try { localStorage.setItem(CLOUD_SYNC_LAST_STATUS_KEY, message); } catch (e) {}
+        }
+
+        function hasCloudSyncCode() {
+            return !!normalizeCloudSyncCode(localStorage.getItem(CLOUD_SYNC_CODE_KEY) || '');
+        }
+
+        function scheduleCloudAutoSave(reason = 'change') {
+            if (_cloudAutoSaveSuppress || !hasCloudSyncCode()) return;
+            _cloudAutoSaveDirty = true;
+            clearTimeout(_cloudAutoSaveTimer);
+            _cloudAutoSaveTimer = setTimeout(() => flushCloudAutoSave(reason), CLOUD_AUTO_SAVE_DEBOUNCE_MS);
+        }
+
+        async function flushCloudAutoSave(reason = 'auto') {
+            if (!hasCloudSyncCode() || !_cloudAutoSaveDirty || _cloudAutoSaveInFlight) return;
+            clearTimeout(_cloudAutoSaveTimer);
+            _cloudAutoSaveTimer = null;
+            _cloudAutoSaveDirty = false;
+            _cloudAutoSaveInFlight = true;
+            try {
+                await pushCloudSave({ silent: true, reason });
+            } finally {
+                _cloudAutoSaveInFlight = false;
+            }
+        }
+
+        function startCloudAutoSaveInterval() {
+            setInterval(() => {
+                if (hasCloudSyncCode() && _cloudAutoSaveDirty) flushCloudAutoSave('interval');
+            }, CLOUD_AUTO_SAVE_INTERVAL_MS);
+            window.addEventListener('beforeunload', () => {
+                if (hasCloudSyncCode()) {
+                    try { lsSave(); } catch (e) {}
+                    // 關閉頁面時瀏覽器不保證非同步 fetch 完成；平時的 1 分鐘防抖與 5 分鐘補傳才是主要保障。
+                    if (_cloudAutoSaveDirty) flushCloudAutoSave('beforeunload');
+                }
+            });
         }
 
         function openCloudSyncModal() {
@@ -8992,6 +9040,7 @@ function checkGame10() {
             if (!input) return;
             const value = normalizeCloudSyncCode(input.value);
             localStorage.setItem(CLOUD_SYNC_CODE_KEY, value);
+            if (value) scheduleCloudAutoSave('sync-code-entered');
         }
 
         function generateCloudSyncCode() {
@@ -9003,6 +9052,7 @@ function checkGame10() {
             localStorage.setItem(CLOUD_SYNC_CODE_KEY, code);
             setCloudSyncStatus('已建立同步碼，請把它記下來：' + code, 'success');
             showToast('已建立同步碼', 'success');
+            scheduleCloudAutoSave('sync-code-created');
         }
 
         async function supabaseRequest(path, options = {}) {
@@ -9021,17 +9071,20 @@ function checkGame10() {
             return body;
         }
 
-        async function uploadCloudSave() {
+        async function pushCloudSave(options = {}) {
+            const silent = !!options.silent;
             const code = getCloudSyncCode();
             if (!code) {
-                showToast('請先建立或輸入同步碼', 'error');
+                if (!silent) showToast('請先建立或輸入同步碼', 'error');
                 setCloudSyncStatus('請先建立或輸入同步碼', 'error');
                 return;
             }
             try {
-                setCloudSyncStatus('正在上傳到雲端...');
+                if (!silent) setCloudSyncStatus('正在上傳到雲端...');
+                _cloudAutoSaveSuppress = true;
                 const saveData = collectFullSyncPackage();
                 saveData.cloudSyncedAt = new Date().toISOString();
+                saveData.cloudSyncReason = options.reason || (silent ? 'auto' : 'manual');
                 await supabaseRequest(SUPABASE_TABLE + '?on_conflict=sync_code', {
                     method: 'POST',
                     headers: { Prefer: 'resolution=merge-duplicates,return=representation' },
@@ -9041,14 +9094,21 @@ function checkGame10() {
                         updated_at: new Date().toISOString()
                     })
                 });
-                const msg = '已上傳到雲端：' + new Date().toLocaleString('zh-TW');
+                const msg = (silent ? '已自動上傳到雲端：' : '已上傳到雲端：') + new Date().toLocaleString('zh-TW');
                 setCloudSyncStatus(msg, 'success');
-                showToast('☁️ 已上傳到雲端', 'success');
+                if (!silent) showToast('☁️ 已上傳到雲端', 'success');
             } catch (e) {
                 console.error('雲端上傳失敗:', e);
                 setCloudSyncStatus('雲端上傳失敗：' + e.message, 'error');
-                showToast('雲端上傳失敗，請檢查同步碼或 Supabase 設定', 'error');
+                if (!silent) showToast('雲端上傳失敗，請檢查同步碼或 Supabase 設定', 'error');
+                if (silent) _cloudAutoSaveDirty = true;
+            } finally {
+                _cloudAutoSaveSuppress = false;
             }
+        }
+
+        async function uploadCloudSave() {
+            return pushCloudSave({ silent: false, reason: 'manual' });
         }
 
         async function downloadCloudSave() {
@@ -9230,6 +9290,7 @@ function checkGame10() {
 
                 localStorage.setItem(LS_KEY, JSON.stringify(state));
                 _lsShowIndicator();
+                scheduleCloudAutoSave('local-save');
             } catch(e) {
                 console.warn('存檔失敗:', e);
             }
