@@ -5767,6 +5767,82 @@ function checkGame10() {
         let g14Selected = null;
         let g14ActiveGroup = 0;
         let g14DragKey = null;
+        let g14Mastery = {};
+
+        function g14MasteryStorageKey() {
+            return 'safetyMasterG14Mastery';
+        }
+
+        function g14LoadMastery() {
+            try {
+                g14Mastery = JSON.parse(localStorage.getItem(g14MasteryStorageKey()) || '{}') || {};
+            } catch (e) {
+                g14Mastery = {};
+            }
+        }
+
+        function g14SaveMastery() {
+            try {
+                localStorage.setItem(g14MasteryStorageKey(), JSON.stringify(g14Mastery));
+                scheduleCloudAutoSave('g14-mastery');
+            } catch (e) {
+                console.warn('第14關熟練度儲存失敗:', e);
+            }
+        }
+
+        function g14MasteryKey(group) {
+            return 'group-' + group;
+        }
+
+        function g14GetMastery(group) {
+            const value = Number(g14Mastery[g14MasteryKey(group)] || 0);
+            return Number.isFinite(value) ? Math.max(0, Math.min(5, value)) : 0;
+        }
+
+        function g14MasteryLabel(value) {
+            return ['未評分', '極不熟', '不熟', '普通', '熟練', '非常熟練'][value] || '未評分';
+        }
+
+        function g14RenderMasteryControl(group) {
+            const rating = g14GetMastery(group);
+            const stars = [1, 2, 3, 4, 5].map(star => `
+                <button type="button" onclick="g14SetMastery(${group}, ${star})" class="text-xl leading-none transition ${star <= rating ? 'text-yellow-300' : 'text-slate-500 hover:text-yellow-200'}" aria-label="第${group}組熟練度 ${star} 星">${star <= rating ? '★' : '☆'}</button>
+            `).join('');
+            return `
+                <div class="flex items-center gap-2 rounded-lg border border-slate-700 bg-slate-900/40 px-3 py-1.5">
+                    <span class="text-xs text-slate-400 whitespace-nowrap">熟練度：${g14MasteryLabel(rating)}</span>
+                    <span class="flex items-center gap-0.5" aria-label="第${group}組熟練度評分">${stars}</span>
+                </div>
+            `;
+        }
+
+        function ensureG14MasteryControls() {
+            for (let group = 1; group <= 10; group++) {
+                const groupEl = document.getElementById('g14-group' + group);
+                if (!groupEl || document.getElementById('g14-mastery-' + group)) continue;
+                const header = groupEl.querySelector('.flex.items-center.gap-2');
+                if (!header) continue;
+                header.classList.add('flex-wrap');
+                const wrap = document.createElement('div');
+                wrap.id = 'g14-mastery-' + group;
+                wrap.className = 'ml-auto';
+                header.appendChild(wrap);
+            }
+        }
+
+        function renderG14MasteryStars() {
+            for (let group = 1; group <= 10; group++) {
+                const wrap = document.getElementById('g14-mastery-' + group);
+                if (wrap) wrap.innerHTML = g14RenderMasteryControl(group);
+            }
+        }
+
+        function g14SetMastery(group, rating) {
+            g14Mastery[g14MasteryKey(group)] = rating;
+            g14SaveMastery();
+            renderG14MasteryStars();
+            showToast(`第${group}組已標記：${g14MasteryLabel(rating)}`, 'success');
+        }
 
         // 各組選項 key 清單
         const g14GroupOpts = {
@@ -5844,10 +5920,13 @@ function checkGame10() {
         }
 
         function initGame14() {
+            g14LoadMastery();
             g14Selected = null;
             g14ActiveGroup = 0;
             g14DragKey = null;
             [1,2,3,4,5,6,7,8,9,10].forEach(g => _g14RenderGroupOpts(g));
+            ensureG14MasteryControls();
+            renderG14MasteryStars();
             // Reset blanks and bind drag events
             document.querySelectorAll('.g14-blank').forEach(blank => {
                 blank.innerText = '＿';
@@ -9035,6 +9114,12 @@ function checkGame10() {
                 g25: {
                     correctIds: safeJsonParse(localStorage.getItem('g25_correct_ids'), [])
                 },
+                mastery: {
+                    games: safeJsonParse(localStorage.getItem(LS_KEY), {}).gameMastery || {}
+                },
+                g14: {
+                    mastery: safeJsonParse(localStorage.getItem('safetyMasterG14Mastery'), {})
+                },
                 g29: {
                     answers: safeJsonParse(localStorage.getItem('safetyMasterG29Answers'), {}),
                     mastery: safeJsonParse(localStorage.getItem('safetyMasterG29Mastery'), {}),
@@ -9067,6 +9152,16 @@ function checkGame10() {
 
                 if (pkg.g25 && Array.isArray(pkg.g25.correctIds)) {
                     localStorage.setItem('g25_correct_ids', JSON.stringify(pkg.g25.correctIds));
+                }
+
+                if (pkg.mastery && pkg.mastery.games) {
+                    const currentMain = safeJsonParse(localStorage.getItem(LS_KEY), {});
+                    currentMain.gameMastery = pkg.mastery.games;
+                    localStorage.setItem(LS_KEY, JSON.stringify(currentMain));
+                }
+
+                if (pkg.g14 && pkg.g14.mastery) {
+                    localStorage.setItem('safetyMasterG14Mastery', JSON.stringify(pkg.g14.mastery));
                 }
 
                 if (pkg.g29) {
@@ -9475,6 +9570,7 @@ function checkGame10() {
 
         function lsClear() {
             localStorage.removeItem(LS_KEY);
+            localStorage.removeItem('safetyMasterG14Mastery');
             localStorage.removeItem('safetyMasterG29Answers');
             localStorage.removeItem('safetyMasterG29Mastery');
             localStorage.removeItem('g25_correct_ids');
@@ -12818,13 +12914,18 @@ function exportSave() {
         function g29SaveMastery() {
             try {
                 localStorage.setItem(g29MasteryStorageKey(), JSON.stringify(g29Mastery));
+                scheduleCloudAutoSave('g29-mastery');
             } catch (e) {
                 console.warn('第29關熟練度儲存失敗:', e);
             }
         }
 
-        function g29GetMastery(qIdx) {
-            const value = Number(g29Mastery[qIdx] || 0);
+        function g29MasteryKey(qIdx, subgroupIdx) {
+            return subgroupIdx == null ? String(qIdx) : qIdx + '-' + subgroupIdx;
+        }
+
+        function g29GetMastery(qIdx, subgroupIdx) {
+            const value = Number(g29Mastery[g29MasteryKey(qIdx, subgroupIdx)] || 0);
             return Number.isFinite(value) ? Math.max(0, Math.min(5, value)) : 0;
         }
 
@@ -12832,24 +12933,29 @@ function exportSave() {
             return ['未評分', '極不熟', '不熟', '普通', '熟練', '非常熟練'][value] || '未評分';
         }
 
-        function g29RenderMastery(qIdx) {
-            const rating = g29GetMastery(qIdx);
+        function g29RenderMastery(qIdx, subgroupIdx, label, compact) {
+            const rating = g29GetMastery(qIdx, subgroupIdx);
+            const keyArg = subgroupIdx == null ? 'null' : subgroupIdx;
+            const textSize = compact ? 'text-base' : 'text-2xl';
+            const panelClass = compact
+                ? 'rounded-lg border border-slate-700 bg-slate-900/35 px-3 py-2 flex flex-wrap items-center justify-between gap-2'
+                : 'rounded-lg border border-slate-600/70 bg-slate-900/35 p-4 flex flex-wrap items-center justify-between gap-3';
             const stars = [1, 2, 3, 4, 5].map(star => `
-                <button type="button" onclick="g29SetMastery(${qIdx}, ${star})" class="text-2xl leading-none transition ${star <= rating ? 'text-yellow-300' : 'text-slate-500 hover:text-yellow-200'}" aria-label="熟練度 ${star} 星">${star <= rating ? '★' : '☆'}</button>
+                <button type="button" onclick="g29SetMastery(${qIdx}, ${star}, ${keyArg})" class="${textSize} leading-none transition ${star <= rating ? 'text-yellow-300' : 'text-slate-500 hover:text-yellow-200'}" aria-label="熟練度 ${star} 星">${star <= rating ? '★' : '☆'}</button>
             `).join('');
             return `
-                <div class="rounded-lg border border-slate-600/70 bg-slate-900/35 p-4 flex flex-wrap items-center justify-between gap-3">
+                <div class="${panelClass}">
                     <div>
-                        <div class="text-sm text-slate-400">本題熟練度</div>
-                        <div class="text-lg font-bold text-yellow-200">${g29MasteryLabel(rating)}</div>
+                        <div class="text-xs text-slate-400">${label || '本題熟練度'}</div>
+                        <div class="${compact ? 'text-sm' : 'text-lg'} font-bold text-yellow-200">${g29MasteryLabel(rating)}</div>
                     </div>
                     <div class="flex items-center gap-1" aria-label="熟練度評分">${stars}</div>
                 </div>
             `;
         }
 
-        function g29SetMastery(qIdx, rating) {
-            g29Mastery[qIdx] = rating;
+        function g29SetMastery(qIdx, rating, subgroupIdx) {
+            g29Mastery[g29MasteryKey(qIdx, subgroupIdx)] = rating;
             g29SaveMastery();
             g29Render();
             showToast(`已標記：${g29MasteryLabel(rating)}`, 'success');
@@ -13099,6 +13205,7 @@ function exportSave() {
                 q.subgroups.forEach((sg, si) => {
                     html += `<div class="bg-slate-800/50 border border-slate-700 rounded-xl p-5">
                         <h4 class="font-bold text-sky-300 mb-2 text-sm">${sg.subtitle}</h4>
+                        <div class="mb-3">${g29RenderMastery(g29Current, si, '本小題熟練度', true)}</div>
                         <p class="text-slate-300 text-sm mb-3 leading-relaxed">${sg.desc}</p>
                         ${sg.table || ''}
                         <button onclick="g29ToggleHint(${si})" class="text-xs text-amber-400 hover:text-amber-300 mb-3 flex items-center gap-1 transition">
@@ -13126,6 +13233,7 @@ function exportSave() {
                 // 舊格式（無 subgroups）
                 html += `<div class="bg-slate-800/50 border border-slate-700 rounded-xl p-5">
                     <h3 class="font-bold text-white mb-2 text-base">${q.title}</h3>
+                    <div class="mb-3">${g29RenderMastery(g29Current, 0, '本小題熟練度', true)}</div>
                     <p class="text-slate-300 text-sm mb-4 leading-relaxed">${q.desc}</p>
                     ${q.table || ''}
                     <button onclick="g29ToggleHint(0)" class="text-xs text-amber-400 hover:text-amber-300 mb-3 flex items-center gap-1 transition">
