@@ -2436,52 +2436,11 @@
                 <div class="mb-4">
                     <span class="bg-cyan-500/20 text-cyan-400 text-xs px-3 py-1 rounded-full font-bold">考點二十一：丁二烯溫度特性排序</span>
                     <h2 class="text-2xl font-black mt-2">丁二烯溫度排序題</h2>
-                    <p class="text-sm text-slate-400 mt-1">請將丁二烯的熔點、閃火點、沸點、自燃溫度，依<strong class="text-cyan-300">由小到大</strong>的順序排列。點選右側字卡後，再點左側槽位放入。</p>
+                <p class="text-sm text-slate-400 mt-1">請將丁二烯的熔點、閃火點、沸點、自燃溫度，依<strong class="text-cyan-300">由小到大</strong>的順序排列。直接拖曳字卡調整順序。</p>
                 </div>
-                <div class="flex gap-6 mt-4">
-                    <!-- 左側槽位 -->
-                    <div class="flex-1">
-                        <h3 class="text-xs font-bold text-slate-400 mb-3">排序槽位（由小到大）</h3>
-                        <div class="space-y-3" id="g21-slots">
-                            <div class="g21-slot flex items-center gap-2" data-slot="1">
-                                <span class="text-xs text-slate-500 font-bold w-8 text-right">第1</span>
-                                <div class="flex-1 min-h-[2.5rem] border-2 border-dashed border-slate-600 rounded-xl flex items-center justify-center text-slate-500 text-sm cursor-pointer hover:border-cyan-500 transition" data-slot-id="1" onclick="placeG21(1)">點此放入</div>
-                                <div class="flex flex-col gap-0.5">
-                                    <button class="text-xs px-1.5 py-0.5 rounded bg-slate-700 text-slate-300 opacity-30 cursor-not-allowed"  title="上移">↑</button>
-                                    <button class="text-xs px-1.5 py-0.5 rounded bg-slate-700 text-slate-300 hover:bg-slate-600 cursor-pointer" onclick="swapG21Slots(1,2)" title="下移">↓</button>
-                                </div>
-                            </div>
-                            <div class="g21-slot flex items-center gap-2" data-slot="2">
-                                <span class="text-xs text-slate-500 font-bold w-8 text-right">第2</span>
-                                <div class="flex-1 min-h-[2.5rem] border-2 border-dashed border-slate-600 rounded-xl flex items-center justify-center text-slate-500 text-sm cursor-pointer hover:border-cyan-500 transition" data-slot-id="2" onclick="placeG21(2)">點此放入</div>
-                                <div class="flex flex-col gap-0.5">
-                                    <button class="text-xs px-1.5 py-0.5 rounded bg-slate-700 text-slate-300 hover:bg-slate-600 cursor-pointer" onclick="swapG21Slots(2,1)" title="上移">↑</button>
-                                    <button class="text-xs px-1.5 py-0.5 rounded bg-slate-700 text-slate-300 hover:bg-slate-600 cursor-pointer" onclick="swapG21Slots(2,3)" title="下移">↓</button>
-                                </div>
-                            </div>
-                            <div class="g21-slot flex items-center gap-2" data-slot="3">
-                                <span class="text-xs text-slate-500 font-bold w-8 text-right">第3</span>
-                                <div class="flex-1 min-h-[2.5rem] border-2 border-dashed border-slate-600 rounded-xl flex items-center justify-center text-slate-500 text-sm cursor-pointer hover:border-cyan-500 transition" data-slot-id="3" onclick="placeG21(3)">點此放入</div>
-                                <div class="flex flex-col gap-0.5">
-                                    <button class="text-xs px-1.5 py-0.5 rounded bg-slate-700 text-slate-300 hover:bg-slate-600 cursor-pointer" onclick="swapG21Slots(3,2)" title="上移">↑</button>
-                                    <button class="text-xs px-1.5 py-0.5 rounded bg-slate-700 text-slate-300 hover:bg-slate-600 cursor-pointer" onclick="swapG21Slots(3,4)" title="下移">↓</button>
-                                </div>
-                            </div>
-                            <div class="g21-slot flex items-center gap-2" data-slot="4">
-                                <span class="text-xs text-slate-500 font-bold w-8 text-right">第4</span>
-                                <div class="flex-1 min-h-[2.5rem] border-2 border-dashed border-slate-600 rounded-xl flex items-center justify-center text-slate-500 text-sm cursor-pointer hover:border-cyan-500 transition" data-slot-id="4" onclick="placeG21(4)">點此放入</div>
-                                <div class="flex flex-col gap-0.5">
-                                    <button class="text-xs px-1.5 py-0.5 rounded bg-slate-700 text-slate-300 hover:bg-slate-600 cursor-pointer" onclick="swapG21Slots(4,3)" title="上移">↑</button>
-                                    <button class="text-xs px-1.5 py-0.5 rounded bg-slate-700 text-slate-300 opacity-30 cursor-not-allowed"  title="下移">↓</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 右側字卡 -->
-                    <div class="flex-1">
-                        <h3 class="text-xs font-bold text-slate-400 mb-3">字卡庫（點選後放入槽位）</h3>
-                        <div class="space-y-2" id="g21-cards"></div>
-                    </div>
+                <div class="mt-4">
+                    <h3 class="text-xs font-bold text-slate-400 mb-3">排序清單（由小到大）</h3>
+                    <div class="space-y-3" id="g21-slots"></div>
                 </div>
                 <div id="g21-reveal" class="hidden mt-5 bg-cyan-950/40 border border-cyan-700 rounded-xl p-4">
                     <p class="text-cyan-300 font-bold text-sm mb-2">🎉 正確答案與溫度數值：</p>
@@ -2503,52 +2462,11 @@
                 <div class="mb-4">
                     <span class="bg-amber-500/20 text-amber-400 text-xs px-3 py-1 rounded-full font-bold">考點二十二：閃火點排序</span>
                     <h2 class="text-2xl font-black mt-2">閃火點由低至高排序題</h2>
-                    <p class="text-sm text-slate-400 mt-1">請將乙醚、丙酮、乙醇、煤油，依<strong class="text-amber-300">閃火點由低至高</strong>的順序排列。點選右側字卡後，再點左側槽位放入。</p>
+                <p class="text-sm text-slate-400 mt-1">請將乙醚、丙酮、乙醇、煤油，依<strong class="text-amber-300">閃火點由低至高</strong>的順序排列。直接拖曳字卡調整順序。</p>
                 </div>
-                <div class="flex gap-6 mt-4">
-                    <!-- 左側槽位 -->
-                    <div class="flex-1">
-                        <h3 class="text-xs font-bold text-slate-400 mb-3">排序槽位（由低至高）</h3>
-                        <div class="space-y-3" id="g22-slots">
-                            <div class="g22-slot flex items-center gap-2" data-slot="1">
-                                <span class="text-xs text-slate-500 font-bold w-8 text-right">最低</span>
-                                <div class="flex-1 min-h-[2.5rem] border-2 border-dashed border-slate-600 rounded-xl flex items-center justify-center text-slate-500 text-sm cursor-pointer hover:border-amber-500 transition" data-slot-id="1" onclick="placeG22(1)">點此放入</div>
-                                <div class="flex flex-col gap-0.5">
-                                    <button class="text-xs px-1.5 py-0.5 rounded bg-slate-700 text-slate-300 opacity-30 cursor-not-allowed" title="上移">↑</button>
-                                    <button class="text-xs px-1.5 py-0.5 rounded bg-slate-700 text-slate-300 hover:bg-slate-600 cursor-pointer" onclick="swapG22Slots(1,2)" title="下移">↓</button>
-                                </div>
-                            </div>
-                            <div class="g22-slot flex items-center gap-2" data-slot="2">
-                                <span class="text-xs text-slate-500 font-bold w-8 text-right">第2</span>
-                                <div class="flex-1 min-h-[2.5rem] border-2 border-dashed border-slate-600 rounded-xl flex items-center justify-center text-slate-500 text-sm cursor-pointer hover:border-amber-500 transition" data-slot-id="2" onclick="placeG22(2)">點此放入</div>
-                                <div class="flex flex-col gap-0.5">
-                                    <button class="text-xs px-1.5 py-0.5 rounded bg-slate-700 text-slate-300 hover:bg-slate-600 cursor-pointer" onclick="swapG22Slots(2,1)" title="上移">↑</button>
-                                    <button class="text-xs px-1.5 py-0.5 rounded bg-slate-700 text-slate-300 hover:bg-slate-600 cursor-pointer" onclick="swapG22Slots(2,3)" title="下移">↓</button>
-                                </div>
-                            </div>
-                            <div class="g22-slot flex items-center gap-2" data-slot="3">
-                                <span class="text-xs text-slate-500 font-bold w-8 text-right">第3</span>
-                                <div class="flex-1 min-h-[2.5rem] border-2 border-dashed border-slate-600 rounded-xl flex items-center justify-center text-slate-500 text-sm cursor-pointer hover:border-amber-500 transition" data-slot-id="3" onclick="placeG22(3)">點此放入</div>
-                                <div class="flex flex-col gap-0.5">
-                                    <button class="text-xs px-1.5 py-0.5 rounded bg-slate-700 text-slate-300 hover:bg-slate-600 cursor-pointer" onclick="swapG22Slots(3,2)" title="上移">↑</button>
-                                    <button class="text-xs px-1.5 py-0.5 rounded bg-slate-700 text-slate-300 hover:bg-slate-600 cursor-pointer" onclick="swapG22Slots(3,4)" title="下移">↓</button>
-                                </div>
-                            </div>
-                            <div class="g22-slot flex items-center gap-2" data-slot="4">
-                                <span class="text-xs text-slate-500 font-bold w-8 text-right">最高</span>
-                                <div class="flex-1 min-h-[2.5rem] border-2 border-dashed border-slate-600 rounded-xl flex items-center justify-center text-slate-500 text-sm cursor-pointer hover:border-amber-500 transition" data-slot-id="4" onclick="placeG22(4)">點此放入</div>
-                                <div class="flex flex-col gap-0.5">
-                                    <button class="text-xs px-1.5 py-0.5 rounded bg-slate-700 text-slate-300 hover:bg-slate-600 cursor-pointer" onclick="swapG22Slots(4,3)" title="上移">↑</button>
-                                    <button class="text-xs px-1.5 py-0.5 rounded bg-slate-700 text-slate-300 opacity-30 cursor-not-allowed" title="下移">↓</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 右側字卡 -->
-                    <div class="flex-1">
-                        <h3 class="text-xs font-bold text-slate-400 mb-3">字卡庫（點選後放入槽位）</h3>
-                        <div class="space-y-2" id="g22-cards"></div>
-                    </div>
+                <div class="mt-4">
+                    <h3 class="text-xs font-bold text-slate-400 mb-3">排序清單（由低至高）</h3>
+                    <div class="space-y-3" id="g22-slots"></div>
                 </div>
                 <div id="g22-reveal" class="hidden mt-5 bg-amber-950/40 border border-amber-700 rounded-xl p-4">
                     <p class="text-amber-300 font-bold text-sm mb-2">🎉 正確答案與閃火點數值：</p>
@@ -7083,7 +7001,7 @@ function checkGame10() {
         }
 
 
-        // ===== 第21關：丁二烯溫度排序 =====
+        // ===== 第21/22關：直接拖曳排序 =====
         // correct order by value: 熔點(-108.9) < 閃火點(-76) < 沸點(-4.5) < 自燃溫度(420)
         const g21Items = [
             { id: 1, label: '熔點',     correctSlot: 1 },
@@ -7093,153 +7011,6 @@ function checkGame10() {
         ];
         let g21SelCard = null, g21SlotData = { 1: null, 2: null, 3: null, 4: null };
 
-        function initGame21() {
-            g21SelCard = null; g21SlotData = { 1: null, 2: null, 3: null, 4: null };
-            document.getElementById('g21-reveal').classList.add('hidden');
-            // Reset slots
-            [1,2,3,4].forEach(i => {
-                const slot = document.querySelector('#g21-slots [data-slot-id="' + i + '"]');
-                if (slot) { slot.innerText = '點此放入'; slot.classList.remove('bg-cyan-900/40','border-cyan-500','text-cyan-200','font-bold'); slot.classList.add('text-slate-500'); }
-            });
-            // Shuffle cards
-            const cardsDiv = document.getElementById('g21-cards');
-            if (!cardsDiv) return;
-            cardsDiv.innerHTML = '';
-            [...g21Items].sort(() => Math.random() - 0.5).forEach(item => {
-                const card = document.createElement('div');
-                card.id = 'g21-card-' + item.id;
-                card.dataset.id = item.id;
-                card.className = 'g21-card bg-cyan-900/20 border border-cyan-700/50 text-cyan-100 text-sm px-4 py-2.5 rounded-xl cursor-pointer transition hover:bg-cyan-900/40 font-bold text-center';
-                card.innerText = item.label;
-                card.onclick = () => selectG21Card(card);
-                // 拖曳支援
-                card.setAttribute('draggable', 'true');
-                card.addEventListener('dragstart', (e) => {
-                    triggerTimer();
-                    _dragData = { elem: card, type: 'g21', id: card.dataset.id, text: card.innerText };
-                    card.classList.add('dragging');
-                    e.dataTransfer.effectAllowed = 'move';
-                    e.dataTransfer.setData('text/plain', card.dataset.id);
-                });
-                card.addEventListener('dragend', () => { card.classList.remove('dragging'); });
-                cardsDiv.appendChild(card);
-            });
-            // 槽位拖曳目標
-            document.querySelectorAll('#g21-slots [data-slot-id]').forEach(slot => {
-                slot.addEventListener('dragover', (e) => { if (_dragData && _dragData.type === 'g21') { e.preventDefault(); slot.classList.add('drag-over'); } });
-                slot.addEventListener('dragleave', () => { slot.classList.remove('drag-over'); });
-                slot.addEventListener('drop', (e) => {
-                    e.preventDefault(); slot.classList.remove('drag-over');
-                    if (!_dragData || _dragData.type !== 'g21') return;
-                    const slotId = parseInt(slot.dataset.slotId);
-                    g21SelCard = parseInt(_dragData.id);
-                    _dragData.elem.classList.add('ring-2','ring-cyan-400','scale-105');
-                    placeG21(slotId);
-                    _dragData = null;
-                });
-            });
-        
-        }
-        function selectG21Card(card) {
-            triggerTimer();
-            if (card.classList.contains('opacity-40')) return;
-            soundClick();
-            document.querySelectorAll('.g21-card').forEach(c => c.classList.remove('ring-2','ring-cyan-400','scale-105'));
-            const id = parseInt(card.dataset.id);
-            if (g21SelCard === id) { g21SelCard = null; return; }
-            g21SelCard = id;
-            card.classList.add('ring-2','ring-cyan-400','scale-105');
-        }
-        function swapG21Slots(slotA, slotB) {
-            // 交換兩個槽位的內容
-            const idA = g21SlotData[slotA];
-            const idB = g21SlotData[slotB];
-            if (idA === idB) return; // 相同不動
-            g21SlotData[slotA] = idB;
-            g21SlotData[slotB] = idA;
-            // 重新渲染兩個槽位
-            [slotA, slotB].forEach(s => {
-                const slot = document.querySelector('#g21-slots [data-slot-id="' + s + '"]');
-                if (!slot) return;
-                const itemId = g21SlotData[s];
-                if (!itemId) {
-                    slot.innerText = '點此放入';
-                    slot.classList.remove('bg-cyan-900/40','border-cyan-500','text-cyan-200','font-bold');
-                    slot.classList.add('text-slate-500');
-                } else {
-                    const item = g21Items.find(x => x.id === itemId);
-                    slot.innerText = item ? item.label : '?';
-                    slot.classList.remove('text-slate-500');
-                    slot.classList.add('bg-cyan-900/40','border-cyan-500','text-cyan-200','font-bold');
-                }
-            });
-            soundClick();
-        }
-        function placeG21(slotId) {
-            triggerTimer();
-            if (!g21SelCard) {
-                // No card selected: if slot has a card, return it to pool
-                if (g21SlotData[slotId]) {
-                    soundClick();
-                    const oldId = g21SlotData[slotId];
-                    const oldCard = document.getElementById('g21-card-' + oldId);
-                    if (oldCard) { oldCard.classList.remove('opacity-40','pointer-events-none'); }
-                    g21SlotData[slotId] = null;
-                    const slot = document.querySelector('#g21-slots [data-slot-id="' + slotId + '"]');
-                    if (slot) {
-                        slot.innerText = '點此放入';
-                        slot.classList.remove('bg-cyan-900/40','border-cyan-500','text-cyan-200','font-bold','border-emerald-500','bg-emerald-950/30','text-emerald-300','border-rose-500','bg-rose-950/30','text-rose-300');
-                        slot.classList.add('text-slate-500');
-                    }
-                }
-                return;
-            }
-            soundClick();
-            // If slot already has a card, return it to pool
-            if (g21SlotData[slotId]) {
-                const oldId = g21SlotData[slotId];
-                const oldCard = document.getElementById('g21-card-' + oldId);
-                if (oldCard) { oldCard.classList.remove('opacity-40','pointer-events-none'); }
-            }
-            g21SlotData[slotId] = g21SelCard;
-            const item = g21Items.find(i => i.id === g21SelCard);
-            const slot = document.querySelector('#g21-slots [data-slot-id="' + slotId + '"]');
-            slot.innerText = item.label;
-            slot.classList.add('bg-cyan-900/40','border-cyan-500','text-cyan-200','font-bold');
-            slot.classList.remove('text-slate-500');
-            // Hide card from pool
-            const card = document.getElementById('g21-card-' + g21SelCard);
-            if (card) { card.classList.add('opacity-40','pointer-events-none'); card.classList.remove('ring-2','ring-cyan-400','scale-105'); }
-            g21SelCard = null;
-                    setTimeout(lsSave, 150);
-        }
-        function checkGame21() {
-            let correct = 0;
-            [1,2,3,4].forEach(slotId => {
-                const slot = document.querySelector('#g21-slots [data-slot-id="' + slotId + '"]');
-                const placedId = g21SlotData[slotId];
-                const item = g21Items.find(i => i.id === placedId);
-                if (item && item.correctSlot === slotId) {
-                    slot.classList.add('border-emerald-500','bg-emerald-950/30','text-emerald-300');
-                    slot.classList.remove('border-cyan-500','bg-cyan-900/40','text-cyan-200','border-dashed','border-slate-600','border-rose-500','bg-rose-950/30','text-rose-300');
-                    correct++;
-                } else if (placedId) {
-                    slot.classList.add('border-rose-500','bg-rose-950/30','text-rose-300');
-                    slot.classList.remove('border-cyan-500','bg-cyan-900/40','text-cyan-200','border-emerald-500','bg-emerald-950/30','text-emerald-300');
-                }
-            });
-            if (correct === 4) {
-                completedGames.game21 = true; recordTime(21); soundSuccess(); showConfetti();
-                document.getElementById('g21-reveal').classList.remove('hidden');
-                showToast('🎉 排序完全正確！溫度數值已公布。','success');
-            } else {
-                soundError();
-                showToast('❌ 答對 ' + correct + '/4，請修正紅色槽位！','error');
-            }
-            updateTrophyCount();
-        }
-
-        // ===== 第22關：閃火點排序 =====
         // correct order: 乙醚(-45) < 丙酮(-20) < 乙醇(13) < 煤油(>38)
         const g22Items = [
             { id: 1, label: '乙醚', correctSlot: 1 },
@@ -7249,143 +7020,233 @@ function checkGame10() {
         ];
         let g22SelCard = null, g22SlotData = { 1: null, 2: null, 3: null, 4: null };
 
-        function initGame22() {
-            g22SelCard = null; g22SlotData = { 1: null, 2: null, 3: null, 4: null };
-            document.getElementById('g22-reveal').classList.add('hidden');
-            [1,2,3,4].forEach(i => {
-                const slot = document.querySelector('#g22-slots [data-slot-id="' + i + '"]');
-                if (slot) { slot.innerText = '點此放入'; slot.classList.remove('bg-amber-900/40','border-amber-500','text-amber-200','font-bold','border-emerald-500','bg-emerald-950/30','text-emerald-300','border-rose-500','bg-rose-950/30','text-rose-300'); slot.classList.add('text-slate-500','border-dashed','border-slate-600'); }
-            });
-            const cardsDiv = document.getElementById('g22-cards');
-            if (!cardsDiv) return;
-            cardsDiv.innerHTML = '';
-            [...g22Items].sort(() => Math.random() - 0.5).forEach(item => {
-                const card = document.createElement('div');
-                card.id = 'g22-card-' + item.id;
-                card.dataset.id = item.id;
-                card.className = 'g22-card bg-amber-900/20 border border-amber-700/50 text-amber-100 text-sm px-4 py-2.5 rounded-xl cursor-pointer transition hover:bg-amber-900/40 font-bold text-center';
-                card.innerText = item.label;
-                                card.onclick = () => selectG22Card(card);
-                // 拖曳支援
-                card.setAttribute('draggable', 'true');
-                card.addEventListener('dragstart', (e) => {
-                    triggerTimer();
-                    _dragData = { elem: card, type: 'g22', id: card.dataset.id, text: card.innerText };
-                    card.classList.add('dragging');
-                    e.dataTransfer.effectAllowed = 'move';
-                    e.dataTransfer.setData('text/plain', card.dataset.id);
-                });
-                card.addEventListener('dragend', () => { card.classList.remove('dragging'); });
-                cardsDiv.appendChild(card);
-            });
-            // 槽位拖曳目標
-            document.querySelectorAll('#g22-slots [data-slot-id]').forEach(slot => {
-                slot.addEventListener('dragover', (e) => { if (_dragData && _dragData.type === 'g22') { e.preventDefault(); slot.classList.add('drag-over'); } });
-                slot.addEventListener('dragleave', () => { slot.classList.remove('drag-over'); });
-                slot.addEventListener('drop', (e) => {
-                    e.preventDefault(); slot.classList.remove('drag-over');
-                    if (!_dragData || _dragData.type !== 'g22') return;
-                    const slotId = parseInt(slot.dataset.slotId);
-                    g22SelCard = parseInt(_dragData.id);
-                    _dragData.elem.classList.add('ring-2','ring-amber-400','scale-105');
-                    placeG22(slotId);
-                    _dragData = null;
-                });
-            });
-        }
-        function selectG22Card(card) {
-            triggerTimer();
-            if (card.classList.contains('opacity-40')) return;
-            soundClick();
-            document.querySelectorAll('.g22-card').forEach(c => c.classList.remove('ring-2','ring-amber-400','scale-105'));
-            const id = parseInt(card.dataset.id);
-            if (g22SelCard === id) { g22SelCard = null; return; }
-            g22SelCard = id;
-            card.classList.add('ring-2','ring-amber-400','scale-105');
-        }
-        function swapG22Slots(slotA, slotB) {
-            const idA = g22SlotData[slotA];
-            const idB = g22SlotData[slotB];
-            if (idA === idB) return;
-            g22SlotData[slotA] = idB;
-            g22SlotData[slotB] = idA;
-            [slotA, slotB].forEach(s => {
-                const slot = document.querySelector('#g22-slots [data-slot-id="' + s + '"]');
-                if (!slot) return;
-                const itemId = g22SlotData[s];
-                if (!itemId) {
-                    slot.innerText = '點此放入';
-                    slot.classList.remove('bg-amber-900/40','border-amber-500','text-amber-200','font-bold');
-                    slot.classList.add('text-slate-500');
-                } else {
-                    const item = g22Items.find(x => x.id === itemId);
-                    slot.innerText = item ? item.label : '?';
-                    slot.classList.remove('text-slate-500');
-                    slot.classList.add('bg-amber-900/40','border-amber-500','text-amber-200','font-bold');
-                }
-            });
-            soundClick();
-        }
-        function placeG22(slotId) {
-            triggerTimer();
-            if (!g22SelCard) {
-                // No card selected: if slot has a card, return it to pool
-                if (g22SlotData[slotId]) {
-                    soundClick();
-                    const oldId = g22SlotData[slotId];
-                    const oldCard = document.getElementById('g22-card-' + oldId);
-                    if (oldCard) { oldCard.classList.remove('opacity-40','pointer-events-none'); }
-                    g22SlotData[slotId] = null;
-                    const slot = document.querySelector('#g22-slots [data-slot-id="' + slotId + '"]');
-                    if (slot) {
-                        slot.innerText = '點此放入';
-                        slot.classList.remove('bg-amber-900/40','border-amber-500','text-amber-200','font-bold','border-emerald-500','bg-emerald-950/30','text-emerald-300','border-rose-500','bg-rose-950/30','text-rose-300');
-                        slot.classList.add('text-slate-500');
-                    }
-                }
-                return;
+        function gSortShuffle(items) {
+            const arr = [...items];
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
             }
-            soundClick();
-            if (g22SlotData[slotId]) {
-                const oldId = g22SlotData[slotId];
-                const oldCard = document.getElementById('g22-card-' + oldId);
-                if (oldCard) { oldCard.classList.remove('opacity-40','pointer-events-none'); }
-            }
-            g22SlotData[slotId] = g22SelCard;
-            const item = g22Items.find(i => i.id === g22SelCard);
-            const slot = document.querySelector('#g22-slots [data-slot-id="' + slotId + '"]');
-            slot.innerText = item.label;
-            slot.classList.add('bg-amber-900/40','border-amber-500','text-amber-200','font-bold');
-            slot.classList.remove('text-slate-500','border-dashed','border-slate-600');
-            const card = document.getElementById('g22-card-' + g22SelCard);
-            if (card) { card.classList.add('opacity-40','pointer-events-none'); card.classList.remove('ring-2','ring-amber-400','scale-105'); }
-            g22SelCard = null;
-                    setTimeout(lsSave, 150);
+            return arr;
         }
-        function checkGame22() {
+
+        function gSortCardClass(tone) {
+            const color = tone === 'amber' ? 'amber' : 'cyan';
+            return `g-sort-card bg-slate-800 border border-slate-600 text-white text-sm px-4 py-3 rounded-xl cursor-grab flex items-center gap-3 select-none transition hover:bg-slate-700 touch-none`;
+        }
+
+        function gSortRenderCard(prefix, item, tone) {
+            const card = document.createElement('div');
+            card.id = `${prefix}-card-${item.id}`;
+            card.dataset.id = String(item.id);
+            card.dataset.correctSlot = String(item.correctSlot);
+            card.className = gSortCardClass(tone);
+            card.setAttribute('draggable', 'true');
+            card.innerHTML = `
+                <span class="g-sort-rank w-8 text-right text-xs font-black text-slate-500"></span>
+                <span class="flex-1 font-bold">${item.label}</span>
+                <span class="text-slate-500 text-xs">拖曳排序</span>
+            `;
+            return card;
+        }
+
+        function gSortUpdateRanks(containerId) {
+            document.querySelectorAll(`#${containerId} .g-sort-card`).forEach((card, idx) => {
+                const rank = card.querySelector('.g-sort-rank');
+                if (rank) rank.textContent = `第${idx + 1}`;
+            });
+        }
+
+        function gSortClearResult(containerId, tone) {
+            const accent = tone === 'amber' ? ['border-amber-500', 'bg-amber-950/25', 'text-amber-200'] : ['border-cyan-500', 'bg-cyan-950/25', 'text-cyan-200'];
+            document.querySelectorAll(`#${containerId} .g-sort-card`).forEach(card => {
+                card.className = gSortCardClass(tone) + ' ' + accent.join(' ');
+                const badge = card.querySelector('.g-sort-answer-badge');
+                if (badge) badge.remove();
+            });
+        }
+
+        function gSortSyncData(containerId, slotData, shouldSave = true) {
+            const cards = Array.from(document.querySelectorAll(`#${containerId} .g-sort-card`));
+            [1, 2, 3, 4].forEach(i => { slotData[i] = null; });
+            cards.forEach((card, idx) => { slotData[idx + 1] = parseInt(card.dataset.id); });
+            gSortUpdateRanks(containerId);
+            if (shouldSave) setTimeout(lsSave, 150);
+        }
+
+        function gSortMoveItem(source, target, clientY) {
+            if (!source || !target || source === target || source.parentNode !== target.parentNode) return;
+            const parent = target.parentNode;
+            const rect = target.getBoundingClientRect();
+            const insertAfter = clientY > rect.top + rect.height / 2;
+            if (insertAfter) parent.insertBefore(source, target.nextSibling);
+            else parent.insertBefore(source, target);
+        }
+
+        function gSortBind(containerId, slotData, tone) {
+            const container = document.getElementById(containerId);
+            if (!container || container.dataset.sortBound === '1') return;
+            let dragSrc = null;
+            let pointerDrag = null;
+            let pointerId = null;
+
+            function cleanup() {
+                if (pointerDrag) {
+                    pointerDrag.style.opacity = '';
+                    pointerDrag.classList.remove('ring-2', tone === 'amber' ? 'ring-amber-400' : 'ring-cyan-400');
+                }
+                container.querySelectorAll('.g-sort-card').forEach(card => card.classList.remove(tone === 'amber' ? 'border-amber-300' : 'border-cyan-300'));
+                pointerDrag = null;
+                pointerId = null;
+            }
+
+            container.addEventListener('dragstart', e => {
+                const card = e.target.closest('.g-sort-card');
+                if (!card) return;
+                triggerTimer();
+                dragSrc = card;
+                setTimeout(() => { card.style.opacity = '0.55'; }, 0);
+                e.dataTransfer.effectAllowed = 'move';
+                e.dataTransfer.setData('text/plain', card.dataset.id);
+            });
+            container.addEventListener('dragend', e => {
+                const card = e.target.closest('.g-sort-card');
+                if (card) card.style.opacity = '';
+                dragSrc = null;
+                gSortClearResult(containerId, tone);
+                gSortSyncData(containerId, slotData);
+            });
+            container.addEventListener('dragover', e => {
+                const target = e.target.closest('.g-sort-card');
+                if (!target || !dragSrc || target === dragSrc) return;
+                e.preventDefault();
+                gSortMoveItem(dragSrc, target, e.clientY);
+            });
+            container.addEventListener('drop', e => {
+                if (!dragSrc) return;
+                e.preventDefault();
+                soundClick();
+                gSortClearResult(containerId, tone);
+                gSortSyncData(containerId, slotData);
+            });
+            container.addEventListener('pointerdown', e => {
+                const card = e.target.closest('.g-sort-card');
+                if (!card || e.pointerType === 'mouse') return;
+                triggerTimer();
+                pointerDrag = card;
+                pointerId = e.pointerId;
+                card.style.opacity = '0.65';
+                card.classList.add('ring-2', tone === 'amber' ? 'ring-amber-400' : 'ring-cyan-400');
+                if (card.setPointerCapture) card.setPointerCapture(e.pointerId);
+                e.preventDefault();
+            }, { passive: false });
+            container.addEventListener('pointermove', e => {
+                if (!pointerDrag || e.pointerId !== pointerId) return;
+                const el = document.elementFromPoint(e.clientX, e.clientY);
+                const target = el && el.closest ? el.closest('.g-sort-card') : null;
+                if (target && target !== pointerDrag && target.parentNode === container) {
+                    gSortMoveItem(pointerDrag, target, e.clientY);
+                }
+                e.preventDefault();
+            }, { passive: false });
+            container.addEventListener('pointerup', e => {
+                if (!pointerDrag || e.pointerId !== pointerId) return;
+                soundClick();
+                cleanup();
+                gSortClearResult(containerId, tone);
+                gSortSyncData(containerId, slotData);
+                e.preventDefault();
+            }, { passive: false });
+            container.addEventListener('pointercancel', cleanup);
+            container.dataset.sortBound = '1';
+        }
+
+        function gSortInit(containerId, items, slotData, tone, revealId) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            const reveal = document.getElementById(revealId);
+            if (reveal) reveal.classList.add('hidden');
+            [1, 2, 3, 4].forEach(i => { slotData[i] = null; });
+            container.innerHTML = '';
+            gSortShuffle(items).forEach(item => container.appendChild(gSortRenderCard(containerId.replace('-slots', ''), item, tone)));
+            gSortBind(containerId, slotData, tone);
+            gSortClearResult(containerId, tone);
+            gSortSyncData(containerId, slotData, false);
+        }
+
+        function gSortApplyOrder(containerId, items, orderIds, slotData, tone) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            container.innerHTML = '';
+            orderIds.forEach(id => {
+                const item = items.find(x => x.id === Number(id));
+                if (item) container.appendChild(gSortRenderCard(containerId.replace('-slots', ''), item, tone));
+            });
+            gSortBind(containerId, slotData, tone);
+            gSortClearResult(containerId, tone);
+            gSortSyncData(containerId, slotData);
+        }
+
+        function gSortCheck(containerId, slotData, gameNum, revealId, successText) {
             let correct = 0;
-            [1,2,3,4].forEach(slotId => {
-                const slot = document.querySelector('#g22-slots [data-slot-id="' + slotId + '"]');
-                const placedId = g22SlotData[slotId];
-                const item = g22Items.find(i => i.id === placedId);
-                if (item && item.correctSlot === slotId) {
-                    slot.classList.add('border-emerald-500','bg-emerald-950/30','text-emerald-300');
-                    slot.classList.remove('border-amber-500','bg-amber-900/40','text-amber-200','border-dashed','border-slate-600','border-rose-500','bg-rose-950/30','text-rose-300');
+            const cards = Array.from(document.querySelectorAll(`#${containerId} .g-sort-card`));
+            cards.forEach((card, idx) => {
+                const expected = parseInt(card.dataset.correctSlot);
+                if (expected === idx + 1) {
+                    card.className = gSortCardClass(containerId === 'g22-slots' ? 'amber' : 'cyan') + ' bg-emerald-900/60 border-emerald-500 text-emerald-200';
                     correct++;
-                } else if (placedId) {
-                    slot.classList.add('border-rose-500','bg-rose-950/30','text-rose-300');
-                    slot.classList.remove('border-amber-500','bg-amber-900/40','text-amber-200','border-emerald-500','bg-emerald-950/30','text-emerald-300');
+                } else {
+                    card.className = gSortCardClass(containerId === 'g22-slots' ? 'amber' : 'cyan') + ' bg-rose-900/60 border-rose-500 text-rose-200';
                 }
             });
-            if (correct === 4) {
-                completedGames.game22 = true; recordTime(22); soundSuccess(); showConfetti();
-                document.getElementById('g22-reveal').classList.remove('hidden');
-                showToast('🎉 排序完全正確！閃火點數值已公布。','success');
+            gSortSyncData(containerId, slotData);
+            if (correct === cards.length) {
+                completedGames['game' + gameNum] = true;
+                recordTime(gameNum);
+                soundSuccess();
+                showConfetti();
+                const reveal = document.getElementById(revealId);
+                if (reveal) reveal.classList.remove('hidden');
+                showToast(successText, 'success');
             } else {
                 soundError();
-                showToast('❌ 答對 ' + correct + '/4，請修正紅色槽位！','error');
+                showToast('❌ 答對 ' + correct + '/' + cards.length + '，請直接拖曳調整紅色字卡！', 'error');
             }
             updateTrophyCount();
+        }
+
+        function gSortShowAnswer(containerId, items, slotData, tone, revealId, toastText) {
+            const ordered = [...items].sort((a, b) => a.correctSlot - b.correctSlot).map(item => item.id);
+            gSortApplyOrder(containerId, items, ordered, slotData, tone);
+            document.querySelectorAll(`#${containerId} .g-sort-card`).forEach(card => {
+                card.classList.add('border-violet-400', 'bg-violet-950/30');
+                if (!card.querySelector('.g-sort-answer-badge')) {
+                    const badge = document.createElement('span');
+                    badge.className = 'g-sort-answer-badge ml-auto text-xs font-black px-2 py-0.5 rounded-full bg-violet-600 text-white';
+                    badge.textContent = '解答';
+                    card.appendChild(badge);
+                }
+            });
+            const reveal = document.getElementById(revealId);
+            if (reveal) reveal.classList.remove('hidden');
+            showToast(toastText, 'info');
+        }
+
+        function initGame21() {
+            g21SelCard = null;
+            gSortInit('g21-slots', g21Items, g21SlotData, 'cyan', 'g21-reveal');
+        }
+
+        function checkGame21() {
+            gSortCheck('g21-slots', g21SlotData, 21, 'g21-reveal', '🎉 排序完全正確！溫度數值已公布。');
+        }
+
+        function initGame22() {
+            g22SelCard = null;
+            gSortInit('g22-slots', g22Items, g22SlotData, 'amber', 'g22-reveal');
+        }
+
+        function checkGame22() {
+            gSortCheck('g22-slots', g22SlotData, 22, 'g22-reveal', '🎉 排序完全正確！閃火點數值已公布。');
         }
 
 
@@ -8584,26 +8445,11 @@ function checkGame10() {
         }
 
         function showAnswer21() {
-            _showAnswerPanel('第21關：丁二烯溫度排序', `
-                <p class="text-cyan-300 font-bold mb-2">正確排序（由低到高）：</p>
-                <p class="text-slate-200 leading-loose">
-                    熔點：<strong class="text-cyan-300">-108.9°C</strong> ＜
-                    閃火點：<strong class="text-cyan-300">-76°C（液態）</strong> ＜
-                    沸點：<strong class="text-cyan-300">-4.5°C</strong> ＜
-                    自燃溫度：<strong class="text-cyan-300">420°C</strong>
-                </p>
-                <p class="text-slate-400 text-xs mt-2">提示：大於常溫的溫度有 <strong class="text-yellow-300">1</strong> 個（自燃溫度）。</p>`, 'cyan');
+            gSortShowAnswer('g21-slots', g21Items, g21SlotData, 'cyan', 'g21-reveal', '📖 第21關解答已直接排入排序清單！');
         }
 
         function showAnswer22() {
-            _showAnswerPanel('第22關：閃火點排序', `
-                <p class="text-amber-300 font-bold mb-2">正確排序（由低到高）：</p>
-                <p class="text-slate-200 leading-loose">
-                    乙醚：<strong class="text-amber-300">-45°C</strong> ＜
-                    丙酮：<strong class="text-amber-300">-20°C</strong> ＜
-                    乙醇：<strong class="text-amber-300">13°C</strong> ＜
-                    煤油：<strong class="text-amber-300">&gt;38°C</strong>
-                </p>`, 'amber');
+            gSortShowAnswer('g22-slots', g22Items, g22SlotData, 'amber', 'g22-reveal', '📖 第22關解答已直接排入排序清單！');
         }
 
 
@@ -9678,8 +9524,8 @@ function exportSave() {
                     case 18: _lsRestoreBlanks('.g18-blank', state.g18, 'blankId'); break;
                     case 19: _lsRestoreG19(state.g19Matched); _lsRestoreG19e(1, state.g19e1Matched); _lsRestoreG19e(2, state.g19e2Matched); break;
                     case 20: _lsRestoreBlanks('.g20-blank', state.g20, 'filled'); break;
-                    case 21: _lsRestoreSlotData(g21SlotData, g21Items, '#g21-slots', state.g21SlotData); break;
-                    case 22: _lsRestoreSlotData(g22SlotData, g22Items, '#g22-slots', state.g22SlotData); break;
+                    case 21: _lsRestoreSortableOrder('g21-slots', g21Items, g21SlotData, state.g21SlotData, 'cyan'); break;
+                    case 22: _lsRestoreSortableOrder('g22-slots', g22Items, g22SlotData, state.g22SlotData, 'amber'); break;
                     case 23: _lsRestoreBlanks('.g23-blank', state.g23, 'blank'); break;
                     case 24: _lsRestoreG24(state.g24); break;
                 }
@@ -9971,6 +9817,20 @@ function exportSave() {
                 if (!poolCard) poolCard = cardsDiv ? document.getElementById(cardsDivId.replace('-cards', '-card-') + cardId) : null;
                 if (poolCard) poolCard.classList.add('opacity-30', 'pointer-events-none');
             });
+        }
+
+        function _lsRestoreSortableOrder(containerId, items, slotData, savedData, tone) {
+            if (!savedData) return;
+            const orderedIds = [1, 2, 3, 4]
+                .map(slot => Number(savedData[slot]))
+                .filter(id => Number.isFinite(id) && items.some(item => item.id === id));
+            if (!orderedIds.length) return;
+            items.forEach(item => {
+                if (!orderedIds.includes(item.id)) orderedIds.push(item.id);
+            });
+            if (typeof gSortApplyOrder === 'function') {
+                gSortApplyOrder(containerId, items, orderedIds, slotData, tone);
+            }
         }
 
         function _lsRestoreG24(data) {
