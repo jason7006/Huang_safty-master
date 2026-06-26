@@ -442,7 +442,10 @@
                                 <span class="text-xs text-emerald-300 font-bold">獨立模式</span>
                                 <span class="text-[10px] text-slate-500 border border-slate-700 rounded-full px-2 py-0.5">正式模擬考</span>
                             </div>
-                            <h3 class="font-black text-white text-base mt-1">乙級職安衛管理員考試模擬器</h3>
+                            <h3 class="font-black text-white text-base mt-1 flex flex-wrap items-baseline gap-2">
+                                <span>乙級職安衛管理員考試模擬器</span>
+                                <span class="text-[11px] font-bold text-emerald-200/90 tracking-wide">by jack yao</span>
+                            </h3>
                             <p class="text-xs text-slate-400 mt-1">單選 60 題＋複選 20 題，100 分鐘，含錯題回顧、收藏與統計。</p>
                         </div>
                     </div>
@@ -5993,9 +5996,13 @@ function checkGame10() {
             if (!filled) return false;
             const expected = g14GetGroupKeys(group, 'correct');
             if (!expected.includes(filled)) return false;
-            const actualCounts = g14CountKeys(g14GetGroupKeys(group, 'filled'));
             const expectedCounts = g14CountKeys(expected);
-            return (actualCounts[filled] || 0) <= (expectedCounts[filled] || 0);
+            const blankIndex = group.map(String).indexOf(String(blank.dataset.blankId));
+            const filledCountSoFar = group.slice(0, blankIndex + 1).reduce((count, id) => {
+                const b = document.querySelector('.g14-blank[data-blank-id="' + id + '"]');
+                return count + (b && b.dataset.filled === filled ? 1 : 0);
+            }, 0);
+            return filledCountSoFar <= (expectedCounts[filled] || 0);
         }
 
         function g14IsBlankCorrect(blank) {
@@ -6091,7 +6098,10 @@ function checkGame10() {
                 const blank = document.querySelector('.g14-blank[data-blank-id="' + bid + '"]');
                 if (!blank) return;
                 const correctKey = blank.dataset.correct;
-                const isCorrect = g14IsBlankCorrect(blank);
+                const flexGroup = g14GetFlexibleGroup(blank.dataset.blankId);
+                const isCorrect = flexGroup
+                    ? g14IsFlexibleBlankIndividuallyCorrect(blank, flexGroup)
+                    : g14IsBlankCorrect(blank);
                 const displayKey = isCorrect && blank.dataset.filled ? blank.dataset.filled : correctKey;
                 const opt = g14FindOption(displayKey);
                 blank.innerText = opt ? g14DisplayLabel(opt) : displayKey;
