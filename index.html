@@ -3233,8 +3233,8 @@
             <div class="glass-panel p-6 rounded-2xl max-w-4xl mx-auto">
                 <div class="mb-4">
                     <span class="bg-violet-500/20 text-violet-400 text-xs px-3 py-1 rounded-full font-bold">考點二十八：連連看</span>
-                    <h2 class="text-2xl font-black mt-2">危險性有害性工作 × 對象配對</h2>
-                    <p class="text-sm text-slate-400 mt-1">請將左欄的危險性有害性工作與右欄的對象連線配對（一項工作可對應多個對象）。</p>
+                    <h2 class="text-2xl font-black mt-2">危險性有害性工作 × 不得從事對象</h2>
+                    <p class="text-sm text-slate-400 mt-1">請判斷左欄工作哪些人不得從事，並與右欄對象連線（一項工作可對應多個對象）。</p>
                 </div>
                 <div class="relative" id="g28-board">
                     <svg id="g28-svg" class="absolute pointer-events-none overflow-visible" style="top:0;left:0;width:100%;height:100%;z-index:1;"></svg>
@@ -5164,7 +5164,7 @@ function checkGame10() {
             { num: 24, tabId: 'tab-chem-equation', icon: 'flask-conical', title: '化學方程式係數填空', desc: '考點二十四：化學方程式配平係數填空' },
             { num: 26, tabId: 'tab-game26', icon: 'list-ordered', title: '緊急應變 & CCB 排序', desc: '考點二十六：緊急應變措施流程與CCB流程排序' },
             { num: 27, tabId: 'tab-game27', icon: 'table', title: '五欄式安全作業標準', desc: '考點二十七：五欄式安全作業標準配合題' },
-            { num: 28, tabId: 'tab-game28', icon: 'link', title: '危險性有害性工作配對', desc: '考點二十八：危險性有害性工作與對象連連看' },
+            { num: 28, tabId: 'tab-game28', icon: 'link', title: '危險性有害性工作禁忌', desc: '考點二十八：危險性有害性工作與不得從事對象連連看' },
             { num: 30, tabId: 'tab-game30', icon: 'truck', title: '堆高機配件填空', desc: '考點三十：堆高機各部位名稱配對' },
             { num: 31, tabId: 'tab-game31', icon: 'list-ordered', title: '勞工代表推選排序', desc: '考點三十一：勞工代表推選優先順序排序' },
             { num: 32, tabId: 'tab-game32', icon: 'link', title: '職安衛責任連連看', desc: '考點三十二：職安衛責任分配配對' },
@@ -10946,7 +10946,7 @@ function exportSave() {
         const g28Data = [
             { id: 1, work: '運轉中機器或動力傳導裝置危險部分之掃除、上油、檢查、修理或上卸皮帶、繩索等工作', targets: ['B'] },
             { id: 2, work: '鑿岩機及其他有顯著振動之工作', targets: ['A','B','C'] },
-            { id: 3, work: '鉛及其化合物散布場所之工作', targets: ['A'] },
+            { id: 3, work: '鉛及其化合物散布場所之工作', targets: ['A','B'] },
             { id: 4, work: '有害輻射散布場所之工作', targets: ['A','B'] },
             { id: 5, work: '處理爆炸性、易燃性等物質之工作', targets: ['B'] }
         ];
@@ -11181,9 +11181,9 @@ function exportSave() {
                                         <tr class="bg-slate-700/70 text-red-300">
                                             <th class="border border-red-500 px-3 py-2" colspan="2">每小時作息時間比例</th>
                                             <th class="border border-red-500 px-3 py-2">連續作業</th>
-                                            <th class="border border-red-500 px-3 py-2">75%作業<br>25%休息</th>
-                                            <th class="border border-red-500 px-3 py-2">50%作業<br>50%休息</th>
-                                            <th class="border border-red-500 px-3 py-2">25%作業<br>75%休息</th>
+                                            <th class="border border-red-500 px-3 py-2"><span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-red-500/20 text-red-200 border border-red-400 mr-1">1</span>75%作業<br>25%休息</th>
+                                            <th class="border border-red-500 px-3 py-2"><span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-red-500/20 text-red-200 border border-red-400 mr-1">2</span>50%作業<br>50%休息</th>
+                                            <th class="border border-red-500 px-3 py-2"><span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-red-500/20 text-red-200 border border-red-400 mr-1">3</span>25%作業<br>75%休息</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -11223,7 +11223,7 @@ function exportSave() {
                             </div>`,
                                 blanks: [
                                     { label: 'WBGT（°C，小數點後1位）', answer: 31.2, tolerance: 0.2 },
-                                    { label: '每小時作業時間百分比（%，如填 25 代表25%作業75%休息）', answer: 25, tolerance: 0 }
+                                    { label: '每小時作息比例選項編號（填 1、2 或 3）', answer: 3, tolerance: 0 }
                                 ],
                                 solution: ''
                             },
@@ -11247,19 +11247,20 @@ function exportSave() {
                             },
                             {
                                 subtitle: '（四）中度工作作息判定',
-                                desc: '某中度工作場所，WBGT = 29°C，依法令規定，每小時作業時間與休息時間之比例應為何？（請填入作業時間百分比）',
+                                desc: '某中度工作場所，WBGT = 29°C，依法令規定，每小時作業時間與休息時間之比例應為何？（請依表格填入選項編號）',
                                 table: `<div class="overflow-x-auto mb-3"><table class="text-sm border-collapse w-full text-center text-slate-200">
                                 <thead><tr class="bg-slate-700/60">
+                                    <th class="border border-slate-600 px-3 py-2">選項</th>
                                     <th class="border border-slate-600 px-3 py-2">作業/休息比例</th>
                                     <th class="border border-slate-600 px-3 py-2">輕工作</th>
                                     <th class="border border-slate-600 px-3 py-2">中度工作</th>
                                     <th class="border border-slate-600 px-3 py-2">重工作</th>
                                 </tr></thead>
                                 <tbody>
-                                    <tr class="bg-slate-800/60"><td class="border border-slate-600 px-3 py-2">100%作業</td><td class="border border-slate-600 px-3 py-2">30.0</td><td class="border border-slate-600 px-3 py-2">26.7</td><td class="border border-slate-600 px-3 py-2">25.0</td></tr>
-                                    <tr class="bg-slate-800/40"><td class="border border-slate-600 px-3 py-2">75%作業 25%休息</td><td class="border border-slate-600 px-3 py-2">30.6</td><td class="border border-slate-600 px-3 py-2">28.0</td><td class="border border-slate-600 px-3 py-2">25.9</td></tr>
-                                    <tr class="bg-slate-800/60"><td class="border border-slate-600 px-3 py-2">50%作業 50%休息</td><td class="border border-slate-600 px-3 py-2">31.4</td><td class="border border-slate-600 px-3 py-2">29.4</td><td class="border border-slate-600 px-3 py-2">27.9</td></tr>
-                                    <tr class="bg-slate-800/40"><td class="border border-slate-600 px-3 py-2">25%作業 75%休息</td><td class="border border-slate-600 px-3 py-2">32.2</td><td class="border border-slate-600 px-3 py-2">31.1</td><td class="border border-slate-600 px-3 py-2">30.0</td></tr>
+                                    <tr class="bg-slate-800/60"><td class="border border-slate-600 px-3 py-2 text-slate-500">—</td><td class="border border-slate-600 px-3 py-2">100%作業</td><td class="border border-slate-600 px-3 py-2">30.0</td><td class="border border-slate-600 px-3 py-2">26.7</td><td class="border border-slate-600 px-3 py-2">25.0</td></tr>
+                                    <tr class="bg-slate-800/40"><td class="border border-slate-600 px-3 py-2"><span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-sky-500/20 text-sky-200 border border-sky-400">1</span></td><td class="border border-slate-600 px-3 py-2">75%作業 25%休息</td><td class="border border-slate-600 px-3 py-2">30.6</td><td class="border border-slate-600 px-3 py-2">28.0</td><td class="border border-slate-600 px-3 py-2">25.9</td></tr>
+                                    <tr class="bg-slate-800/60"><td class="border border-slate-600 px-3 py-2"><span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-sky-500/20 text-sky-200 border border-sky-400">2</span></td><td class="border border-slate-600 px-3 py-2">50%作業 50%休息</td><td class="border border-slate-600 px-3 py-2">31.4</td><td class="border border-slate-600 px-3 py-2">29.4</td><td class="border border-slate-600 px-3 py-2">27.9</td></tr>
+                                    <tr class="bg-slate-800/40"><td class="border border-slate-600 px-3 py-2"><span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-sky-500/20 text-sky-200 border border-sky-400">3</span></td><td class="border border-slate-600 px-3 py-2">25%作業 75%休息</td><td class="border border-slate-600 px-3 py-2">32.2</td><td class="border border-slate-600 px-3 py-2">31.1</td><td class="border border-slate-600 px-3 py-2">30.0</td></tr>
                                 </tbody></table></div>`,
                                 hint: `<div class="bg-amber-900/30 border border-amber-700/50 rounded-lg p-4 mb-3 text-sm text-amber-200">
                                 <p class="font-bold mb-2">📐 判斷方式：</p>
@@ -11272,7 +11273,7 @@ function exportSave() {
                                 <p>50%作業上限 29.4°C → 29 ≤ 29.4 ✓ → 可以 <strong class="text-yellow-300">50%作業、50%休息</strong></p>
                             </div>`,
                                 blanks: [
-                                    { label: '每小時作業時間百分比（%，如填 50 代表50%作業50%休息）', answer: 50, tolerance: 0 }
+                                    { label: '每小時作息比例選項編號（填 1、2 或 3）', answer: 2, tolerance: 0 }
                                 ],
                                 solution: ''
                             }
